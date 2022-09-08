@@ -1,0 +1,335 @@
+/* ------------------------------------------------------------ */
+/* ----- Déclarations générales pour l'ensemble des pages ----- */
+/* ------------------------------------------------------------ */
+
+* {
+    padding: 0;
+    margin: 0;
+}
+    
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+}
+
+main {
+    padding-top: 3.7%;
+}
+
+.button {
+    text-decoration: none;
+    color: white;
+    background-color: rgb(132, 7, 78);
+    padding: 13px 20px 13px 20px;
+    margin-top: 10px;
+    border-radius: 25px;
+    text-align: center;
+    transition-duration: 0.5s;
+}
+
+.button:hover {
+    background-color: rgb(216, 173, 109);
+}
+
+
+
+/* ----------------------MENU DE NAVIGATION---------------------*/
+     
+header {
+    background-color: rgba(132, 7, 78, 1);
+    line-height: 30px;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    box-shadow: 0 0 5px black;
+}
+
+header img {
+    width: 50px;
+    margin-right: 10px;
+}
+
+header #logo {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+header a{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    letter-spacing: 2px;
+    transition-duration: 0.5s;
+    padding: 10px 20px 10px 20px;
+}
+
+header a:hover {
+    color: rgb(216, 173, 109);
+}
+
+header .titre {
+    align-self: center;
+    padding-top: 5px;
+}
+
+header nav {
+    flex: 75;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px 0 20px;
+} 
+
+header ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-end;
+    align-self: center;
+} 
+
+/*------------------------FOOTER-------------------------*/
+     
+footer {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    padding: 1%;
+    text-align: center;
+    font-size: 70%;
+}
+
+/* ------------------------------------------------------------ */
+/* ------ Déclarations spécifiques pour la page d'accueil ------*/
+/* ------------------------------------------------------------ */
+
+/* ----------------------HAUT DE PAGE------------------------- */
+
+/* Caractéristiques générales */
+
+h3, h4, h5{
+    text-align: center;
+    color: rgb(132, 7, 78);
+}
+
+section .row {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+section img{
+    max-width: 500px;
+}
+
+#logowords{
+    max-width: 300px;
+}
+
+.row p {
+    margin: 15px 40px 15px 40px;
+    text-align: center;
+    max-width: 500px;
+    line-height: 35px;
+}
+
+#values, #contact {
+    background-color: rgb(184, 112, 149);
+}
+
+#secondactivity, #fourthactivity {
+    background-color: rgba(243, 213, 229, 36%);
+}
+
+#presentation, #values, #firstactivity, #secondactivity, #thirdactivity, #fourthactivity, #guildteam, #contact {
+    padding: 3% 1% 3% 1%;
+}
+
+/* Caractéristiques spécifiques : section valeurs */
+
+#values {
+    padding: 2% 1% 2% 1%;
+}
+
+.value {
+    margin: 20px 50px 20px 50px;
+}
+
+.value i {
+    padding: 0 110px 0 110px;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.value h5 {
+    font-size: large;
+}
+
+.value p {
+    color: white;
+}
+
+/* Caractéristiques spécifiques : section activités */
+
+#activities h3 {
+    padding-top: 3%;
+    font-size: x-large;
+}
+
+#activities .andmore {
+    color: black;
+    font-size: large;
+    text-align: center;
+}
+
+/* Caractéristiques spécifiques : section équipe */
+
+#guildteam h3 {
+    font-size: x-large;
+}
+
+.lead {
+    margin: 20px 50px 20px 50px;
+}
+
+
+.lead p {
+    color: white;
+    background-color: rgb(132, 7, 78);
+    font-weight: 500;
+    padding: 2px 15px 2px 15px;
+    margin-top: 10px;
+    border-radius: 25px;
+    text-align: center;
+}
+
+/* Caractéristiques spécifiques : section contact*/
+
+#contact h3 {
+    color: white;
+    font-size: x-large;
+}
+
+/* Caractéristiques spécifiques : vague SVG */
+
+/* #presentation {
+    padding: 1%;
+}
+
+#fond {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 42%;
+    display: block;
+}
+
+#values {
+    margin-top: 4.5%;
+} */
+
+/* ------------------------------------------------------------ */
+/* ---- Déclarations spécifiques pour la page all articles ---- */
+/* ------------------------------------------------------------ */
+
+#allarticles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-self: center;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 7px;
+    width: 350px;
+    height: 300px;
+    margin: 1.5%;
+    position: relative;
+    text-align: center;
+  }
+
+.card-img {
+    border-radius: 7px 7px 0 0;
+    max-width: 350px;
+}
+
+/* .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+} */
+
+.card-content {
+    padding: 0px 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+.card-title {
+    font-size: large;
+    text-decoration: none;
+    color : black;
+    line-height: 30px;
+}
+
+/* Coller le button au bas de la card
+.card-button a {
+    padding: 7px 12px 7px 12px;
+    margin: 30px;
+    position: absolute;
+    bottom: 15px;
+} */
+
+.card a {
+    z-index: 1;
+    position: absolute;
+    text-decoration: none;
+    margin: auto;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+}
+
+/* ------------------------------------------------------------ */
+/* -- Déclarations spécifiques pour les pages single article -- */
+/* ------------------------------------------------------------ */
+
+.single-article {
+    background-color: rgba(243, 213, 229, 36%);
+}
+
+.single-article div {
+    padding: 0 1%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-self: center;
+}
+
+.single-article .banner {
+    width: 100%;
+}
+
+.single-article .details p {
+    align-self: left;
+    padding-bottom: 20px;
+    padding-right: 20px;
+    color: grey;
+}
+
+.single-article .text {
+    max-width: 1000px;
+    padding: 40px 60px;
+    background-color: white;
+}
+
+.single-article .comment {
+    padding: 30px
+}
+
+/* ------------------------------------------------------------ */
+/* -- Déclarations spécifiques pour la page ________________ -- */
+/* ------------------------------------------------------------ */

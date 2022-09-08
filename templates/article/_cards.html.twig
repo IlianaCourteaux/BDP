@@ -1,0 +1,21 @@
+{% for article in articlesList %}
+
+	<div class="card">
+
+        <img src="{{ asset('img/' ~ article.photo) }}" class="card-img" alt="{{ article.title }}">
+		
+		<a href="{{ path('app_single', {id: article.id}) }}" class="link"></a>
+
+        <div class="card-content">
+
+			<h5 class="card-title">{{ article.title }}</h5>
+
+			{# <div class="card-button">
+				<a href="{{ path('app_single', {id: article.id}) }}" class="button">Lire</a>
+			</div> #}
+
+		</div>
+
+	</div>
+
+{% endfor %}

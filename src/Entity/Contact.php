@@ -19,8 +19,9 @@ class Contact
     #[ORM\Column(type: 'string', length: 255)]
     private $username;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $subject;
+    
+    #[ORM\Column(type: 'array')]
+    private $subject = [];
 
     #[ORM\Column(type: 'string', length: 255)]
     private $message;
@@ -54,12 +55,12 @@ class Contact
         return $this;
     }
 
-    public function getSubject(): ?string
+    public function getSubject(): ?array
     {
         return $this->subject;
     }
 
-    public function setSubject(string $subject): self
+    public function setSubject(array $subject): self
     {
         $this->subject = $subject;
 
@@ -77,4 +78,5 @@ class Contact
 
         return $this;
     }
+
 }

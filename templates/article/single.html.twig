@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="single-article">
+
+<img class="banner" src="{{ asset('img/' ~ article.banner) }}" alt="{{ article.title }}">
+
+<div>
+<h1 class="title">{{ article.title }}</h1>
+</div>
+
+<div class="details">
+<p>Publication : </p>
+<p>Par : {{ article.author }}</p>
+</div>
+
+<div>
+<p class="text">{{ article.text }}</p>
+</div>
+
+<div class="comment">
+<h3>Laissez un commentaire</h3>
+</div>
+
+</div>
+
+{% endblock %}

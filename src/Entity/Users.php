@@ -2,40 +2,68 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
+use App\Repository\UsersRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
-#[ORM\Entity(repositoryClass: UserRepository::class)]
-class User implements UserInterface, PasswordAuthenticatedUserInterface
+#[UniqueEntity('email')]
+#[ORM\Entity(repositoryClass: UsersRepository::class)]
+#[ORM\EntityListeners(['App\EntityListener\UserListener'])]
+class Users implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private ?int $id;
+
+    #[ORM\Column(type: 'string', length: 50)]
+    #[Assert\NotBlank()]
+    #[Assert\Length(min: 3, max:50)]
+    private ?string $username = null;
 
     #[ORM\Column(type: 'string', length: 180, unique: true)]
-    private $email;
+    #[Assert\NotBlank()]
+    #[Assert\Length(min: 3, max:180)]
+    private string $email;
 
     #[ORM\Column(type: 'json')]
-    private $roles = [];
+    #[Assert\NotNull()]
+    private array $roles = [];
 
     #[ORM\Column(type: 'string')]
-    private $password;
+    #[Assert\NotBlank()]
+    private string $password;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $username;
+    #[ORM\Column(type: 'datetime_immutable')]
+    #[Assert\NotBlank()]
+    private \DateTimeImmutable $createdAt;
 
     #[ORM\Column(type: 'boolean')]
-    private $verified;
+    private $isVerified = false;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $picture;
+    public function __construct()
+    {
+        $this->createdAt = new \DateTimeImmutable();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getUsername(): ?string
+    {
+        return $this->username;
+    }
+
+    public function setUsername(string $username): self
+    {
+        $this->username = $username;
+
+        return $this;
     }
 
     public function getEmail(): ?string
@@ -103,38 +131,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function getUsername(): ?string
+    public function getCreatedAt(): ?\DateTimeImmutable
     {
-        return $this->username;
+        return $this->createdAt;
     }
 
-    public function setUsername(string $username): self
+    public function setCreatedAt(\DateTimeImmutable $createdAt): self
     {
-        $this->username = $username;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    public function isVerified(): ?bool
+    public function isIsVerified(): ?bool
     {
-        return $this->verified;
+        return $this->isVerified;
     }
 
-    public function setVerified(bool $verified): self
+    public function setIsVerified(bool $isVerified): self
     {
-        $this->verified = $verified;
-
-        return $this;
-    }
-
-    public function getPicture(): ?string
-    {
-        return $this->picture;
-    }
-
-    public function setPicture(string $picture): self
-    {
-        $this->picture = $picture;
+        $this->isVerified = $isVerified;
 
         return $this;
     }

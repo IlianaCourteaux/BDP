@@ -1,0 +1,203 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{# ---------- BLOC PRESENTATION ---------- #}
+
+	<section id="presentation" class="container-fluid">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-sm">
+	                <p><img id="logowords" src="{{ asset('img/logo_words.png') }}" alt="Les Bâtonnets de Poisson"></p>
+                    <p>
+                    Bienvenue chez les bâtonnets ! 
+                    Nous sommes une guilde sociale du jeu The Elder Scrolls Online, fondée en 2015.
+                    Nos valeurs sont notre force, et nous ont permis de garantir un espace le plus safe et inclusif possible. 
+                    Nous proposons régulièrement des activités de toute sorte et bien sur la bonne ambiance est au rendez-vous !
+                    </p>
+                </div>
+                
+                <div class="col-sm">
+                    <img src="{{ asset('img/raid_helra.png') }}" class="img-thumbnail" alt="Les Bâtonnets après avoir conquis la Citadelle d'Hel Ra en Vétéran Hardmode">
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+{# Image SVG vague 
+<div>
+<img id="fond" src="{{ asset('img/wave3.svg')}}">
+</div> #}
+
+{# ---------- BLOC VALEURS ---------- #}
+
+	<section id="values">
+        <div class="container">
+            <div class="row">
+                <div class="value">
+                    <i class="fa-solid fa-people-roof fa-4x"></i>
+                    <h5>Inclusivité</h5>
+                    <p>Un espace safe pour tous·tes<br>et une équipe réactive</p>
+                </div>
+                <div class="value">
+                    <i class="fa-regular fa-comments fa-4x"></i>
+                    <h5>Entraide</h5>
+                    <p>Des membres toujours partants<br>pour partager des aventures</p>
+                </div>
+                <div class="value">
+                    <i class="fa-brands fa-discord fa-4x"></i>
+                    <h5>Discord</h5>
+                    <p>Un discord dédié, réservé<br>aux membres de la guilde</p>
+                </div>
+            </div>
+        </div>
+	    <div class="row">
+		    <a href="#" class="button">Découvrez notre charte</a>
+	    </div>
+    </section>
+
+    {# ---------- BLOC ACTIVITES ---------- #}
+
+    <section id="activities">
+    	<div>
+		    <h3>Activités de guilde</h3>
+	    </div>
+	<div id="firstactivity">
+        <div class="container">
+            <div class="row">
+                <div>
+                    <img src="{{ asset('img/raid_sollance.png') }}" alt="Les Bâtonnets après avoir conquis Sollance en Vétéran Hardmode">
+                </div>
+                <div>
+                    <h4>Activité 1</h4>
+                    <p>
+                    Lorem ipsum dolor sit amet. Et atque autem non aspernatur quod aut assumenda esse qui placeat assumenda ea sequi et similique omnis quo impedit sunt. Et sequi porro ut tenetur pariatur a magnam aliquid ut saepe cupiditate eum quae doloribus sit ipsum tenetur et necessitatibus minus
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    	<div id="secondactivity">
+        <div class="container">
+            <div class="row">
+                <div>
+                    <h4>Activité 2</h4>
+                    <p>
+                    Lorem ipsum dolor sit amet. Et atque autem non aspernatur quod aut assumenda esse qui placeat assumenda ea sequi et similique omnis quo impedit sunt. Et sequi porro ut tenetur pariatur a magnam aliquid ut saepe cupiditate eum quae doloribus sit ipsum tenetur et necessitatibus minus
+                    </p>
+                </div>
+                <div>
+                    <img src="{{ asset('img/raid_sollance.png') }}" alt="Les Bâtonnets après avoir conquis Sollance en Vétéran Hardmode">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    	<div id="thirdactivity">
+        <div class="container">
+            <div class="row">
+                <div>
+                    <img src="{{ asset('img/raid_sollance.png') }}" alt="Les Bâtonnets après avoir conquis Sollance en Vétéran Hardmode">
+                </div>
+                <div>
+                    <h4>Activité 3</h4>
+                    <p>
+                    Lorem ipsum dolor sit amet. Et atque autem non aspernatur quod aut assumenda esse qui placeat assumenda ea sequi et similique omnis quo impedit sunt. Et sequi porro ut tenetur pariatur a magnam aliquid ut saepe cupiditate eum quae doloribus sit ipsum tenetur et necessitatibus minus
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+    	<div id="fourthactivity">
+        <div class="container">
+            <div class="row">
+                <div>
+                    <h4>Activité 4</h4>
+                    <p>
+                    Lorem ipsum dolor sit amet. Et atque autem non aspernatur quod aut assumenda esse qui placeat assumenda ea sequi et similique omnis quo impedit sunt. Et sequi porro ut tenetur pariatur a magnam aliquid ut saepe cupiditate eum quae doloribus sit ipsum tenetur et necessitatibus minus
+                    </p>
+                    <div class="andmore">
+		                <p>Et plus encore...</p>
+	                </div>
+                </div>
+                <div>
+                    <img src="{{ asset('img/raid_sollance.png') }}" alt="Les Bâtonnets après avoir conquis Sollance en Vétéran Hardmode">
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    {# ---------- BLOC EQUIPE ---------- #}
+
+    <section id="guildteam">
+    	<div>
+		    <h3>L'équipe de gestion</h3>
+	    </div>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="lead">
+                    <img src="{{ asset('img/Screenshot_36.png') }}" alt="Fadfadet">
+                    <p>@Fadfadet</p>
+                </div>
+                <div class="lead">
+                    <img src="{{ asset('img/Screenshot_37.png') }}" alt="Ame-ko">
+                    <p>@Ame-ko</p>
+                </div>
+                <div class="lead">
+                    <img src="{{ asset('img/Screenshot_38.png') }}" alt="DawnHawthorne">
+                    <p>@DawnHawthorne</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# ---------- BLOC CONTACT ---------- #}
+
+    <section id="contact">
+	<div>
+    <h3>Rejoignez-nous</h3>
+    </div>
+    </section>
+
+    {# <div>
+    <form id="contact-form" method="post">
+        
+        <div class="contact-line">
+            <div class="contact-name">
+                <input type="text" id="name" placeholder="Votre identifiant TESO" required>
+            </div>
+
+            <div class="contact-email">
+                <input type="email" id="email" placeholder="Votre adresse e-mail" required>
+            </div>
+        </div>
+
+        <div class="contact-line">
+            <div class="contact-subject">
+                <select id="subjects" placeholder="Sélectionnez un sujet" multiple>
+					<option value="join">Rejoindre la guilde</option>
+  					<option value="ask">Demande de renseignements</option>
+  					<option value="other">Autre</option>
+				</select>
+            </div>
+
+        <div class="contact-line">
+            <textarea id="Message" placeholder="Présentez-vous !" required></textarea>
+        </div>
+
+        <div>
+            <button type="submit">Envoyer</button>
+        </div>
+
+    </form>
+    </div>
+
+</div> #}
+
+{% endblock %}
