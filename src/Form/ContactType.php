@@ -54,7 +54,7 @@ class ContactType extends AbstractType
                     'minlength' => '3',
                     'maxlength' => '50',
                 ],
-                'label' => "Nom d'utilisateur Discord",
+                'label' => "Nom d'utilisateur Discord (Facultatif)",
                 'label_attr' => [
                     'class' => 'form_label'
                 ],
