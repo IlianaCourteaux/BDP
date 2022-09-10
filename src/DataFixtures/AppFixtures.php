@@ -7,6 +7,7 @@ use Faker\Generator;
 use App\Entity\Users;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use App\Entity\Contact;
 
 class AppFixtures extends Fixture
 {
@@ -39,6 +40,21 @@ class AppFixtures extends Fixture
             $manager->persist($user);
         }
 
+        // Contact
+
+        for ($i=0; $i<5; $i++){
+            $contact = new Contact();
+            $contact
+                ->setUsername($this->faker->name())
+                ->setEmail($this->faker->email())
+                ->setDiscord($this->faker->word() . '#' . $this->faker->numberBetween(1000, 9999))
+                ->setSubject(['0'])
+                ->setMessage($this->faker->text());
+
+                $manager->persist($contact);
+        }
+
         $manager->flush();
     }
+
 }

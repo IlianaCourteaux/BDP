@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les Bâtonnets de Poisson - Modifier mon profil{% endblock %}
+
+{% block body %}
+
+        {% for message in app.flashes('success') %}
+        <div>
+            {{ message }}
+        </div>
+        {% endfor %}
+
+        {# {% for message in app.flashes('warning') %}
+        <div>
+            {{ message }}
+        </div>
+        {% endfor %} #}
+
+    <div>
+        <h1>Modifier mon profil</h1>
+        {{ form(form) }}
+    </div>
+
+{% endblock %}

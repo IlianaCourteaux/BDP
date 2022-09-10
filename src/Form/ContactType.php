@@ -4,22 +4,94 @@ namespace App\Form;
 
 use App\Entity\Contact;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class ContactType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email', EmailType::class)
-            ->add('username')
-            ->add('subject')
-            ->add('message')
-            ->add('envoyer', SubmitType::class)
-        ;
+            ->add('email', EmailType::class, [
+                'attr'=> [
+                    'class' => 'form_control',
+                    'minlength' => '2',
+                    'maxlength' => '180',
+                ],
+                'label' => 'Adresse email',
+                'label_attr' => [
+                    'class' => 'form_label'
+                ],
+                'constraints' => [
+                    new Assert\NotBlank(),
+                    new Assert\Email(),
+                    new Assert\Length(['min' => 2, 'max' => 180])
+                ]
+            ])
+            ->add('username', TextType::class, [
+                'attr'=> [
+                    'class' => 'form_control',
+                    'minlength' => '3',
+                    'maxlength' => '50',
+                ],
+                'label' => 'Pseudo',
+                'label_attr' => [
+                    'class' => 'form_label'
+                ],
+                'constraints' => [
+                    new Assert\Length(['min' => 3, 'max' => 50])
+                ]
+            ])
+            ->add('discord',TextType::class, [
+                'attr'=> [
+                    'class' => 'form_control',
+                    'minlength' => '3',
+                    'maxlength' => '50',
+                ],
+                'label' => "Nom d'utilisateur Discord",
+                'label_attr' => [
+                    'class' => 'form_label'
+                ],
+                'constraints' => [
+                    new Assert\Length(['min' => 3, 'max' => 50])
+                ]
+            ])
+            // ->add('subject', ChoiceType::class, [
+            //     'choices'  => [
+            //         'Candidature en guilde' => 0,
+            //         'Demande de renseignements' => 1,
+            //         'Autre sujet' => 2,
+            //     ],
+            //     'label' => "Sujet",
+            //     'label_attr' => [
+            //         'class' => 'form_label'
+            //     ]
+            // ])
+            ->add('message', TextareaType::class, [
+                'attr' => [
+                    'class' => 'form_control',
+                ],
+                'label' => 'Message',
+                'label_attr' => [
+                    'class' => 'form_label'
+                ],
+                'constraints' => [
+                    new Assert\NotBlank()
+                ]
+            ])
+            ->add('submit', SubmitType::class, [
+                'attr' => [
+                    'class' => 'button'
+                ],
+                'label' => 'Envoyer'
+            ]);;
+
     }
 
     public function configureOptions(OptionsResolver $resolver): void
