@@ -4,14 +4,16 @@ namespace App\Controller\Admin;
 
 use App\Entity\Article;
 use Doctrine\ORM\EntityManagerInterface;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class ArticleCrudController extends AbstractCrudController
 {
@@ -26,6 +28,14 @@ class ArticleCrudController extends AbstractCrudController
         return Article::class;
     }
 
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setEntityLabelInPlural('Articles')
+            ->setEntityLabelInSingular('Article')
+            ->addFormTheme('@FOSCKEditor/Form/ckeditor_widget.html.twig');
+    }
+
     public function configureFields(string $pageName): iterable
     {
         return [
@@ -33,8 +43,10 @@ class ArticleCrudController extends AbstractCrudController
             TextField::new('title', 'Titre'),
             TextField::new('slug'),
             TextField::new('author', 'Auteurice'),
-            TextEditorField::new('text', 'Texte')->setSortable(false),
-            ImageField::new('photo', 'Photo')
+            TextEditorField::new('text', 'Texte')
+                ->hideOnIndex()
+                ->setFormType(CKEditorType::class),
+            ImageField::new('photo', 'Image')
                 ->setBasePath(self::ARTICLES_BASE_PATH)
                 ->setUploadDir(self::ARTICLES_UPLOAD_DIR)
                 ->setSortable(false),
@@ -42,11 +54,11 @@ class ArticleCrudController extends AbstractCrudController
                 ->setBasePath(self::BANNER_BASE_PATH)
                 ->setUploadDir(self::BANNER_UPLOAD_DIR)
                 ->setSortable(false),
-            TextField::new('keywords')->setSortable(false),
-            AssociationField::new('category'),
+            TextField::new('keywords', 'Mots-clés')->setSortable(false),
+            AssociationField::new('category', 'Catégorie'),
             BooleanField::new('published', 'Publié'),
-            DateTimeField::new('createdAt')->hideOnForm(),
-            DateTimeField::new('updatedAt')->hideOnForm(),
+            DateTimeField::new('createdAt', 'Date de création')->hideOnForm(),
+            DateTimeField::new('updatedAt', 'Dernière modification')->hideOnForm(),
         ];
     }
 

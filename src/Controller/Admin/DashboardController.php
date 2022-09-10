@@ -5,11 +5,13 @@ namespace App\Controller\Admin;
 use App\Entity\Article;
 use App\Entity\Category;
 use App\Entity\Contact;
+use App\Entity\Users;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -23,6 +25,7 @@ class DashboardController extends AbstractDashboardController
     }
 
     #[Route('/admin', name: 'admin')]
+    #[IsGranted('ROLE_ADMIN')]
     public function index(): Response
     {
         $url = $this->adminUrlGenerator
@@ -54,6 +57,10 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Voir tous', 'fas fa-eye', Category::class),
             
         ]);
+
+        yield MenuItem::section('Utilisateurs');
+
+        yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-user', Users::class);
 
         yield MenuItem::section('Contact');
 

@@ -2,28 +2,29 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Contact;
+use App\Entity\Users;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
-class ContactCrudController extends AbstractCrudController
+class UsersCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Contact::class;
+        return Users::class;
     }
 
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setEntityLabelInPlural('Demandes de contact')
-            ->setEntityLabelInSingular('Demande de contact');
+            ->setEntityLabelInPlural('Utilisateurs')
+            ->setEntityLabelInSingular('Utilisateur');
     }
 
     public function configureFields(string $pageName): iterable
@@ -31,11 +32,11 @@ class ContactCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             EmailField::new('email')->setFormTypeOption('disabled', 'disabled'),
-            TextField::new('username', 'Pseudo')->setFormTypeOption('disabled', 'disabled'),
-            TextField::new('discord', 'Pseudo Discord')->setFormTypeOption('disabled', 'disabled'),
-            ArrayField::new('subject', 'Sujet'),
-            TextareaField::new('message')->hideOnIndex()->setFormTypeOption('disabled', 'disabled'),
+            TextField::new('username', 'Pseudo'),
+            ArrayField::new('roles'),
+            BooleanField::new('isVerified', 'Vérifié'),
             DateTimeField::new('createdAt', 'Date de création')->hideOnForm(),
+            DateTimeField::new('updatedAt', 'Dernière modification')->hideOnForm(),
         ];
     }
 }

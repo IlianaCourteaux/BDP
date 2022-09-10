@@ -28,13 +28,26 @@ class AppFixtures extends Fixture
     {
         // Users
 
+        $users = [];
+
+        $admin = new Users();
+        $admin
+            ->setUsername('Administrateur')
+            ->setEmail('admin@batonnets.fr')
+            ->setRoles(['ROLE_USER', 'ROLE_ADMIN'])
+            ->setIsVerified('1')
+            ->setPassword('password');
+
+        $users[] = $admin;
+        $manager->persist($admin);
+
         for ($i=0; $i<10; $i++){
             $user = new Users();
             $user
                 ->setUsername($this->faker->name())
                 ->setEmail($this->faker->email())
                 ->setRoles(['ROLE_USER'])
-                ->setIsVerified('1')
+                ->setIsVerified(mt_rand(0, 1) === 1)
                 ->setPassword('password');
 
             $manager->persist($user);
