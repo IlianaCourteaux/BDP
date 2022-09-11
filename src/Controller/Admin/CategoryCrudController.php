@@ -29,7 +29,7 @@ class CategoryCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('name', 'Nom'),
-            BooleanField::new('Active', 'Actif'),
+            BooleanField::new('Active', 'Active'),
         ];
     }
 

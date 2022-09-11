@@ -14,32 +14,28 @@ class Comments
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $title;
-
-    #[ORM\Column(type: 'string', length: 255)]
     private $text;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'text')]
     private $image;
 
+    #[ORM\Column(type: 'datetime_immutable')]
+    private $createdAt;
+
     #[ORM\ManyToOne(targetEntity: Article::class, inversedBy: 'comments')]
-    private $Article;
+    private $article;
+
+    #[ORM\ManyToOne(targetEntity: Users::class, inversedBy: 'comments')]
+    private $user;
+
+    public function __construct(Article $article)
+    {
+        $this->article = $article;
+    }
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getTitle(): ?string
-    {
-        return $this->title;
-    }
-
-    public function setTitle(string $title): self
-    {
-        $this->title = $title;
-
-        return $this;
     }
 
     public function getText(): ?string
@@ -66,14 +62,38 @@ class Comments
         return $this;
     }
 
-    public function getArticle(): ?Article
+    public function getCreatedAt(): ?\DateTimeImmutable
     {
-        return $this->Article;
+        return $this->createdAt;
     }
 
-    public function setArticle(?Article $Article): self
+    public function setCreatedAt(\DateTimeImmutable $createdAt): self
     {
-        $this->Article = $Article;
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getArticle(): ?article
+    {
+        return $this->article;
+    }
+
+    public function setArticle(?article $article): self
+    {
+        $this->article = $article;
+
+        return $this;
+    }
+
+    public function getUser(): ?Users
+    {
+        return $this->user;
+    }
+
+    public function setUser(?Users $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

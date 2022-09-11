@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Article;
 use App\Entity\Category;
+use App\Entity\Comments;
 use App\Entity\Contact;
 use App\Entity\Users;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -38,13 +39,16 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('BDP');
+            ->setTitle('Les Bâtonnets de Poisson');
     }
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
+        yield MenuItem::linkToRoute('Retour sur le site', 'fa fa-undo', 'app_home');
+        
+        yield MenuItem::linkToDashboard('Tableau de bord', 'fa fa-home');
 
+        // Section articles
         yield MenuItem::section('Articles');
 
         yield MenuItem::subMenu('Articles', 'fas fa-bars')->setSubItems([
@@ -54,16 +58,17 @@ class DashboardController extends AbstractDashboardController
 
         yield MenuItem::subMenu('Catégories', 'fas fa-bars')->setSubItems([
             MenuItem::linkToCrud('Ajouter une catégorie', 'fas fa-plus', Category::class)->setAction(Crud::PAGE_NEW),
-            MenuItem::linkToCrud('Voir tous', 'fas fa-eye', Category::class),
+            MenuItem::linkToCrud('Voir toutes', 'fas fa-eye', Category::class),
             
         ]);
 
+        yield MenuItem::linkToCrud('Commentaires', 'fas fa-comment', Comments::class);
+
+        // Section Utilisateurs
         yield MenuItem::section('Utilisateurs');
 
-        yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-user', Users::class);
+        yield MenuItem::linkToCrud('Liste des utilisateurs', 'fas fa-user', Users::class);
 
-        yield MenuItem::section('Contact');
-
-        yield MenuItem::linkToCrud('Demandes recues', 'fas fa-envelope', Contact::class);
+        yield MenuItem::linkToCrud('Demandes de contact', 'fas fa-envelope', Contact::class);
     }
 }

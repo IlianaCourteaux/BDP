@@ -4,7 +4,7 @@
 
         <img src="{{ asset('img/' ~ article.photo) }}" class="card-img" alt="{{ article.title }}">
 		
-		<a href="{{ path('app_single', {id: article.id}) }}" class="link"></a>
+		<a href="{{ path('app_single', {slug: article.slug}) }}" class="link"></a>
 
         <div class="card-content">
 

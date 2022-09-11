@@ -49,11 +49,13 @@ class ArticleCrudController extends AbstractCrudController
             ImageField::new('photo', 'Image')
                 ->setBasePath(self::ARTICLES_BASE_PATH)
                 ->setUploadDir(self::ARTICLES_UPLOAD_DIR)
-                ->setSortable(false),
+                ->setSortable(false)
+                ->setRequired(false),
             ImageField::new('banner', 'Bannière')
                 ->setBasePath(self::BANNER_BASE_PATH)
                 ->setUploadDir(self::BANNER_UPLOAD_DIR)
-                ->setSortable(false),
+                ->setSortable(false)
+                ->setRequired(false),
             TextField::new('keywords', 'Mots-clés')->setSortable(false),
             AssociationField::new('category', 'Catégorie'),
             BooleanField::new('published', 'Publié'),

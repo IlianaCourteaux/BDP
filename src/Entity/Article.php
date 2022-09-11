@@ -37,7 +37,7 @@ class Article
     #[ORM\Column(type: 'string', length: 255)]
     private string|File $banner;
 
-    #[ORM\OneToMany(mappedBy: 'Article', targetEntity: Comments::class)]
+    #[ORM\OneToMany(mappedBy: 'article', targetEntity: Comments::class)]
     private $comments;
 
     #[ORM\Column(type: 'datetime_immutable')]
@@ -248,5 +248,10 @@ class Article
         $this->category = $category;
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->title;
     }
 }

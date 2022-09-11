@@ -11,18 +11,33 @@
 </div>
 
 <div class="details">
-<p>Publication : </p>
-<p>Par : {{ article.author }}</p>
+<p>Auteur·ice : {{ article.author }}</p>
+<p>Publication : {{ article.createdAt|date('d M Y') }}</p>
+{% if article.updatedAt %}
+<p> Dernière mise à jour : {{ article.updatedAt|date('d M Y') }}
+{% endif %}
 </div>
 
 <div>
 <p class="text">{{ article.text }}</p>
 </div>
 
-<div class="comment">
-<h3>Laissez un commentaire</h3>
-</div>
+<section class="comment">
+    <h3>Laisser un commentaire</h3>
 
-</div>
+    {# {% for message in app.flashes('success') %}
+        <div>
+            {{ message }}
+        </div>
+    {% endfor %} #}
+    
+    <div>{{ form(commentForm) }}</div>
+
+    <h3>{{ article.comments|length }} commentaire(s)</h3>
+
+    <div>
+    </div>
+
+<section>
 
 {% endblock %}

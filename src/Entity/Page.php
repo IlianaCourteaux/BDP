@@ -19,7 +19,7 @@ class Page
     #[ORM\Column(type: 'string', length: 255)]
     private $title;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'text')]
     private $text;
 
     public function getId(): ?int
