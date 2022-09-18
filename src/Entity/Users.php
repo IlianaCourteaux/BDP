@@ -31,6 +31,10 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\Length(min: 3, max:180)]
     private string $email;
 
+    #[ORM\Column(type: 'string', length: 100, nullable: true)]
+    #[Assert\Length(min: 6, max:100)]
+    private $discord;
+
     #[ORM\Column(type: 'json')]
     #[Assert\NotNull()]
     private array $roles = [];
@@ -51,6 +55,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Comments::class)]
     private $comments;
+
 
     public function __construct()
     {
@@ -95,6 +100,18 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     public function getUserIdentifier(): string
     {
         return (string) $this->email;
+    }
+
+    public function getDiscord(): ?string
+    {
+        return $this->discord;
+    }
+
+    public function setDiscord(?string $discord): self
+    {
+        $this->discord = $discord;
+
+        return $this;
     }
 
     /**
@@ -210,4 +227,5 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return $this->username;
     }
+
 }

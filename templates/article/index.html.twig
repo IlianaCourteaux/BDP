@@ -8,8 +8,14 @@
     <h1>Tous les articles</h1>
 
     <div id="allarticles" class='d-flex flex-wrap justify-content-evenly'>
-		{% include "article/_cards.html.twig" as { article } %}
+		{% include "article/_cards.html.twig" %}
 	</div>
+
+        <div class="row">
+            <div>
+                {{ knp_pagination_render(articlesList) }}
+            </div>
+        </div>
 
     {# <div>
     {% for article in articlesList %}

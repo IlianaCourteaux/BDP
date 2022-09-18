@@ -2,7 +2,7 @@
 
 	<div class="card">
 
-        <img src="{{ asset('img/' ~ article.photo) }}" class="card-img" alt="{{ article.title }}">
+        <img src="{{ asset('img/uploads/' ~ article.image.fileName) }}" class="card-img" alt="{{ article.title }}">
 		
 		<a href="{{ path('app_single', {slug: article.slug}) }}" class="link"></a>
 

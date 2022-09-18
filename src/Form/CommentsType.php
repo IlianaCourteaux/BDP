@@ -31,6 +31,7 @@ class CommentsType extends AbstractType
                 'label' => 'Envoyer'
             ]);
 
+        // Pour essayer d'avoir l'ID plutôt que le titre de l'article de passé dans le hiddentype ?
         // $builder->get('article')
         //     ->addModelTransformer(new CallbackTransformer(
         //         fn (Article $article) => $article->getId(),

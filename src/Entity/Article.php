@@ -31,12 +31,6 @@ class Article
     #[ORM\Column(type: 'string', length: 255)]
     private $author;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private string|File $photo;
-
-    #[ORM\Column(type: 'string', length: 255)]
-    private string|File $banner;
-
     #[ORM\OneToMany(mappedBy: 'article', targetEntity: Comments::class)]
     private $comments;
 
@@ -53,9 +47,19 @@ class Article
     #[ORM\JoinColumn(nullable: false)]
     private $category;
 
+    #[ORM\ManyToMany(targetEntity: SubCategory::class, inversedBy: 'articles')]
+    private $subCategories;
+
+    #[ORM\ManyToOne(targetEntity: Media::class)]
+    private $image;
+
+    #[ORM\ManyToOne(targetEntity: Media::class)]
+    private $banner;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+        $this->subCategories = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -122,55 +126,6 @@ class Article
 
         return $this;
     }
-
-    /**
-     * Get the value of photo
-     *
-     * @return string|File
-     */
-    public function getPhoto(): string|File
-    {
-        return $this->photo;
-    }
-
-    /**
-     * Set the value of photo
-     *
-     * @param string|File $photo
-     *
-     * @return self
-     */
-    public function setPhoto(string|File $photo): self
-    {
-        $this->photo = $photo;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of banner
-     *
-     * @return string|File
-     */
-    public function getBanner(): string|File
-    {
-        return $this->banner;
-    }
-
-    /**
-     * Set the value of banner
-     *
-     * @param string|File $banner
-     *
-     * @return self
-     */
-    public function setBanner(string|File $banner): self
-    {
-        $this->banner = $banner;
-
-        return $this;
-    }
-
 
     /**
      * @return Collection<int, Comments>
@@ -250,8 +205,57 @@ class Article
         return $this;
     }
 
+    /**
+     * @return Collection|SubCategory[]
+     */
+    public function getSubCategories(): Collection
+    {
+        return $this->subCategories;
+    }
+
+    public function addSubCategory(Category $subCategory): self
+    {
+        if (!$this->subCategories->contains($subCategory)) {
+            $this->subCategories[] = $subCategory;
+        }
+
+        return $this;
+    }
+
+    public function removeSubCategory(SubCategory $subCategory): self
+    {
+        $this->subCategories->removeElement($subCategory);
+
+        return $this;
+    }
+
+    public function getImage(): ?Media
+    {
+        return $this->image;
+    }
+
+    public function setImage(?Media $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    public function getBanner(): ?Media
+    {
+        return $this->banner;
+    }
+
+    public function setBanner(?Media $banner): self
+    {
+        $this->banner = $banner;
+
+        return $this;
+    }
+
     public function __toString(): string
     {
         return $this->title;
     }
+
 }

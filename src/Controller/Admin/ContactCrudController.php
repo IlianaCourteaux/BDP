@@ -5,7 +5,6 @@ namespace App\Controller\Admin;
 use App\Entity\Contact;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
@@ -33,7 +32,7 @@ class ContactCrudController extends AbstractCrudController
             EmailField::new('email')->setFormTypeOption('disabled', 'disabled'),
             TextField::new('username', 'Pseudo')->setFormTypeOption('disabled', 'disabled'),
             TextField::new('discord', 'Pseudo Discord')->setFormTypeOption('disabled', 'disabled'),
-            ArrayField::new('subject', 'Sujet'),
+            TextField::new('object', 'Sujet'),
             TextareaField::new('message')->hideOnIndex()->setFormTypeOption('disabled', 'disabled'),
             DateTimeField::new('createdAt', 'Date de création')->hideOnForm(),
         ];

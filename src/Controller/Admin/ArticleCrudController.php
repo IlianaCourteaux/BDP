@@ -18,10 +18,10 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 class ArticleCrudController extends AbstractCrudController
 {
 
-    public const ARTICLES_BASE_PATH ='img/upload/photo';
-    public const ARTICLES_UPLOAD_DIR ='public/img/upload/photo';
-    public const BANNER_BASE_PATH ='img/upload/banner'; 
-    public const BANNER_UPLOAD_DIR ='public/img/upload/banner';
+    // public const ARTICLES_BASE_PATH ='img/upload/photo';
+    // public const ARTICLES_UPLOAD_DIR ='public/img/upload/photo';
+    // public const BANNER_BASE_PATH ='img/upload/banner'; 
+    // public const BANNER_UPLOAD_DIR ='public/img/upload/banner';
 
     public static function getEntityFqcn(): string
     {
@@ -46,18 +46,21 @@ class ArticleCrudController extends AbstractCrudController
             TextEditorField::new('text', 'Texte')
                 ->hideOnIndex()
                 ->setFormType(CKEditorType::class),
-            ImageField::new('photo', 'Image')
-                ->setBasePath(self::ARTICLES_BASE_PATH)
-                ->setUploadDir(self::ARTICLES_UPLOAD_DIR)
-                ->setSortable(false)
-                ->setRequired(false),
-            ImageField::new('banner', 'Bannière')
-                ->setBasePath(self::BANNER_BASE_PATH)
-                ->setUploadDir(self::BANNER_UPLOAD_DIR)
-                ->setSortable(false)
-                ->setRequired(false),
+            AssociationField::new('image'),
+            AssociationField::new('banner', 'Bannière'),
+            // ImageField::new('photo', 'Image')
+            //     ->setBasePath(self::ARTICLES_BASE_PATH)
+            //     ->setUploadDir(self::ARTICLES_UPLOAD_DIR)
+            //     ->setSortable(false)
+            //     ->setRequired(false),
+            // ImageField::new('banner', 'Bannière')
+            //     ->setBasePath(self::BANNER_BASE_PATH)
+            //     ->setUploadDir(self::BANNER_UPLOAD_DIR)
+            //     ->setSortable(false)
+            //     ->setRequired(false),
             TextField::new('keywords', 'Mots-clés')->setSortable(false),
             AssociationField::new('category', 'Catégorie'),
+            AssociationField::new('subCategories', 'Sous-Catégories'),
             BooleanField::new('published', 'Publié'),
             DateTimeField::new('createdAt', 'Date de création')->hideOnForm(),
             DateTimeField::new('updatedAt', 'Dernière modification')->hideOnForm(),

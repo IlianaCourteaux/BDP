@@ -31,6 +31,9 @@ class Contact
     #[ORM\Column(type: 'array')]
     private $subject = [];
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $object;
+
     #[ORM\Column(type: 'text')]
     #[Assert\NotBlank()]
     private $message;
@@ -38,6 +41,7 @@ class Contact
     #[ORM\Column(type: 'datetime_immutable')]
     #[Assert\NotNull()]
     private \DateTimeImmutable $createdAt;
+
 
     public function __construct()
     {
@@ -97,6 +101,18 @@ class Contact
         return $this;
     }
 
+    public function getObject(): ?string
+    {
+        return $this->object;
+    }
+
+    public function setObject(string $object): self
+    {
+        $this->object = $object;
+
+        return $this;
+    }
+
     public function getMessage(): ?string
     {
         return $this->message;
@@ -119,6 +135,11 @@ class Contact
         $this->createdAt = $createdAt;
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->username;
     }
 
 }

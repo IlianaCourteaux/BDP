@@ -18,20 +18,6 @@ class RegistrationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('username', TextType::class, [
-                'attr'=> [
-                    'class' => 'form_control',
-                    'minlength' => '3',
-                    'maxlength' => '50',
-                ],
-                'label' => 'Pseudo',
-                'label_attr' => [
-                    'class' => 'form_label'
-                ],
-                'constraints' => [
-                    new Assert\Length(['min' => 3, 'max' => 50])
-                ]
-            ])
             ->add('email', EmailType::class, [
                 'attr'=> [
                     'class' => 'form_control',
@@ -46,6 +32,35 @@ class RegistrationType extends AbstractType
                     new Assert\NotBlank(),
                     new Assert\Email(),
                     new Assert\Length(['min' => 2, 'max' => 180])
+                ]
+            ])
+            ->add('username', TextType::class, [
+                'attr'=> [
+                    'class' => 'form_control',
+                    'minlength' => '3',
+                    'maxlength' => '50',
+                ],
+                'label' => 'Pseudo',
+                'label_attr' => [
+                    'class' => 'form_label'
+                ],
+                'constraints' => [
+                    new Assert\Length(['min' => 3, 'max' => 50])
+                ]
+            ])
+            ->add('discord', TextType::class, [
+                'required' => false,
+                'attr'=> [
+                    'class' => 'form_control',
+                    'minlength' => '6',
+                    'maxlength' => '100',
+                ],
+                'label' => 'Identifiant Discord (facultatif)',
+                'label_attr' => [
+                    'class' => 'form_label'
+                ],
+                'constraints' => [
+                    new Assert\Length(['min' => 6, 'max' => 100])
                 ]
             ])
             ->add('password', RepeatedType::class, [

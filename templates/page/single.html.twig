@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ page.title }}{% endblock %}
+
+{% block body %}
+
+<div class="single-article">
+    <div class="text">
+        <img class="logo" src="{{ asset('img/uploads/' ~ page.image.fileName) }}" alt="{{ page.title }}">
+
+        <div>
+            <h1 class="title">{{ page.title }}</h1>
+        </div>
+
+        <div>
+            <p>{{ page.text }}</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

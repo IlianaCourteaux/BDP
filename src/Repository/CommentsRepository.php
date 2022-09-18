@@ -2,8 +2,10 @@
 
 namespace App\Repository;
 
+use App\Entity\Article;
 use App\Entity\Comments;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -21,23 +23,40 @@ class CommentsRepository extends ServiceEntityRepository
         parent::__construct($registry, Comments::class);
     }
 
-    public function add(Comments $entity, bool $flush = false): void
+    public function findForPagination(?Article $article = null): Query
     {
-        $this->getEntityManager()->persist($entity);
+        $qb = $this->createQueryBuilder('com')
+            ->orderBy('com.createdAt', 'DESC');
 
-        if ($flush) {
-            $this->getEntityManager()->flush();
+        if ($article)
+        {
+            $qb
+                ->leftJoin('com.article', 'art')
+                ->where($qb->expr()->eq('art.id', ':articleId'))
+                ->setParameter('articleId', $article->getId());
         }
+
+        return $qb->getQuery();
     }
 
-    public function remove(Comments $entity, bool $flush = false): void
-    {
-        $this->getEntityManager()->remove($entity);
 
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
-    }
+    // public function add(Comments $entity, bool $flush = false): void
+    // {
+    //     $this->getEntityManager()->persist($entity);
+
+    //     if ($flush) {
+    //         $this->getEntityManager()->flush();
+    //     }
+    // }
+
+    // public function remove(Comments $entity, bool $flush = false): void
+    // {
+    //     $this->getEntityManager()->remove($entity);
+
+    //     if ($flush) {
+    //         $this->getEntityManager()->flush();
+    //     }
+    // }
 
 //    /**
 //     * @return Comments[] Returns an array of Comments objects

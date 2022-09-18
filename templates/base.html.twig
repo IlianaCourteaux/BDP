@@ -31,16 +31,16 @@
 	<header>
         <nav>
 
-        	<a id="logo" href="/home">
+        	<a id="logo" href="{{ path('app_home') }}">
             	<img src="{{ asset('img/logo_eye_white.png') }}" alt="Les Bâtonnets de Poisson">
            	 	<p class="titre">Les Bâtonnets de Poisson</p>
         	</a>
 
                 <ul>
-                    <li><a href="{{ path('app_articles') }}">Guides</a></li>
-                    <li><a href="">Builds</a></li>
+                    <li><a href="{{ path('app_articles', {category: 'guides'}) }}">Guides</a></li>
+                    <li><a href="{{ path('app_articles', {category: 'builds'}) }}">Builds</a></li>
                     <li><a href="">Galerie</a></li>
-                    <li><a href="">Charte de Guilde</a></li>
+                    <li><a href="{{ path('app_page', {slug: 'charte-de-guilde'}) }}">Charte de Guilde</a></li>
 				</ul>
 
 				<ul>

@@ -62,17 +62,17 @@ class ContactType extends AbstractType
                     new Assert\Length(['min' => 3, 'max' => 50])
                 ]
             ])
-            // ->add('subject', ChoiceType::class, [
-            //     'choices'  => [
-            //         'Candidature en guilde' => 0,
-            //         'Demande de renseignements' => 1,
-            //         'Autre sujet' => 2,
-            //     ],
-            //     'label' => "Sujet",
-            //     'label_attr' => [
-            //         'class' => 'form_label'
-            //     ]
-            // ])
+            ->add('object', ChoiceType::class, [
+                'choices'  => [
+                    'Candidature en guilde' => 'Candidature',
+                    'Demande de renseignements' => 'Renseignements',
+                    'Autre sujet' => 'Autre',
+                ],
+                'label' => "Sujet",
+                'label_attr' => [
+                    'class' => 'form_label'
+                ]
+            ])
             ->add('message', TextareaType::class, [
                 'attr' => [
                     'class' => 'form_control',

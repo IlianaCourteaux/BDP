@@ -23,7 +23,7 @@ class UsersType extends AbstractType
                 'minlength' => '3',
                 'maxlength' => '50',
             ],
-            'label' => 'Pseudo',
+            'label' => 'Pseudo (modifier si nécéssaire)',
             'label_attr' => [
                 'class' => 'form_label'
             ],
@@ -37,7 +37,7 @@ class UsersType extends AbstractType
                 'minlength' => '2',
                 'maxlength' => '180',
             ],
-            'label' => 'Adresse email',
+            'label' => 'Adresse email (modifier si nécéssaire)',
             'label_attr' => [
                 'class' => 'form_label'
             ],
@@ -47,6 +47,9 @@ class UsersType extends AbstractType
                 new Assert\Length(['min' => 2, 'max' => 180])
             ]
         ])
+        ->add('password', PasswordType::class, [
+            'label' => "Confirmez votre mot de passe"
+    ])
         // ->add('password', PasswordType::class, [
         //     'attr' => [
         //         'class' => 'form_control'

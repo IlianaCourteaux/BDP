@@ -10,20 +10,23 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ArticleRepository;
+use App\Service\ArticleService;
+use App\Service\CommentsService;
 use Doctrine\ORM\EntityManagerInterface;
 
 class ArticleController extends AbstractController
 {
     #[Route('/articles', name: 'app_articles')]
-    public function index(ManagerRegistry $manager): Response
+    public function index(ManagerRegistry $manager, ArticleService $articleService): Response
     {
         return $this->render('article/index.html.twig', [
-            'articlesList' => $manager->getRepository(Article::class)->findAll()
+            // 'articlesList' => $manager->getRepository(Article::class)->findAll()
+            'articlesList' => $articleService->getPaginatedArticles(),
         ]);
     }
 
     #[Route('articles/{slug}', name: 'app_single', methods: ['GET', 'POST'])]
-    public function single(?Article $article, EntityManagerInterface $emi):Response
+    public function single(?Article $article, EntityManagerInterface $emi, CommentsService $commentsService):Response
     {
         if(!$article) {
             return $this->redirectToRoute('app_home');
@@ -31,7 +34,7 @@ class ArticleController extends AbstractController
 
         $comment = new Comments($article);
 
-        $commentForm = $this->createForm(CommentsType::class);
+        $commentForm = $this->createForm(CommentsType::class, $comment);
         
         // if($commentForm->isSubmitted() && $commentForm->isValid()) {
         //     $comments = $commentForm->getData();
@@ -45,13 +48,12 @@ class ArticleController extends AbstractController
         //     $emi->flush();
 
         //     return $this->redirectToRoute('app_single'); 
-        // }
-
-                
+        // }    
 
         return $this->renderForm('article/single.html.twig',[
             'article' => $article,
-            'commentForm' => $commentForm
+            'commentForm' => $commentForm,
+            'comments' =>$commentsService->getPaginatedComments($article)
         ]);
     }
 

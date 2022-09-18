@@ -1,20 +1,15 @@
-{% extends 'base.html.twig' %}
+{% set username = comment.user.username %}
 
-{% block title %}Hello CommentsController!{% endblock %}
+<div id="comment-{{ comment.id }}">
+        <div>
+            
+            <h5>
+                    <span class="comment-author">{{ username }}</span>
+            </h5>
+            
+            <p>{{ comment.createdAt|date('d M Y à H:i') }}</p>
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+            <p>{{ comment.text }}</p>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/Iliana/Documents/VSCode/BDP/src/Controller/CommentsController.php'|file_link(0) }}">src/Controller/CommentsController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/Iliana/Documents/VSCode/BDP/templates/comments/index.html.twig'|file_link(0) }}">templates/comments/index.html.twig</a></code></li>
-    </ul>
+        </div>
 </div>
-{% endblock %}

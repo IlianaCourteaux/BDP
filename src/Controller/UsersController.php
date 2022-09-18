@@ -36,24 +36,24 @@ class UsersController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()) {
             
-            // if ($hasher->isPasswordValid($user, $form->getData()->getPassword())) {
+            if ($hasher->isPasswordValid($selectedUser, $form->getData()['password'])) {
                 $selectedUser->setUpdatedAt(new \DateTimeImmutable());
-                $user = $form->getData();
+                $selectedUser = $form->getData();
 
                 $this->addFlash(
                     'success',
                     'Vos informations ont bien été modifiées'
                 );
 
-                $emi->persist($user);
+                $emi->persist($selectedUser);
                 $emi->flush();
 
-            // } else {
-            //     $this->addFlash(
-            //         'warning',
-            //         'Le mot de passe est incorrect'
-            //     );
-            // }
+            } else {
+                $this->addFlash(
+                    'warning',
+                    'Le mot de passe est incorrect'
+                );
+            }
         }
 
         return $this->render('users/edit.html.twig', [
