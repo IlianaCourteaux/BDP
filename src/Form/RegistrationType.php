@@ -20,7 +20,7 @@ class RegistrationType extends AbstractType
         $builder
             ->add('email', EmailType::class, [
                 'attr'=> [
-                    'class' => 'form_control',
+                    'class' => 'form_item',
                     'minlength' => '2',
                     'maxlength' => '180',
                 ],
@@ -36,7 +36,7 @@ class RegistrationType extends AbstractType
             ])
             ->add('username', TextType::class, [
                 'attr'=> [
-                    'class' => 'form_control',
+                    'class' => 'form_item',
                     'minlength' => '3',
                     'maxlength' => '50',
                 ],
@@ -51,7 +51,7 @@ class RegistrationType extends AbstractType
             ->add('discord', TextType::class, [
                 'required' => false,
                 'attr'=> [
-                    'class' => 'form_control',
+                    'class' => 'form_item',
                     'minlength' => '6',
                     'maxlength' => '100',
                 ],
@@ -65,17 +65,32 @@ class RegistrationType extends AbstractType
             ])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
+                
                 'first_options' => [
-                    'label' => "Mot de passe"
+                    'attr'=> [
+                        'class' => 'form_item'
+                    ],
+                    'label' => "Mot de passe",
+                    'label_attr' => [
+                        'class' => 'form_label'
+                    ],
                 ],
+                
                 'second_options' => [
-                    'label' => 'Confirmation du mot de passe'
+                    'attr'=> [
+                        'class' => 'form_item'
+                    ],
+                    'label' => 'Confirmation du mot de passe',
+                    'label_attr' => [
+                        'class' => 'form_label'
+                    ],
                 ],
+                
                 'invalid_message' => 'Les mots de passe ne correspondent pas'
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => [
-                    'class' => 'button'
+                    'class' => 'submit_button'
                 ]
             ])
         ;

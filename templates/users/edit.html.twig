@@ -3,6 +3,7 @@
 {% block title %}Les Bâtonnets de Poisson - Modifier mon profil{% endblock %}
 
 {% block body %}
+<section class="form_page">
 
         {% for message in app.flashes('success') %}
         <div>
@@ -16,9 +17,11 @@
         </div>
         {% endfor %} #}
 
-    <div>
-        <h1>Modifier mon profil</h1>
-        {{ form(form) }}
+    <div class="form_section">
+        <h1 class="form_title">Modifier mon profil</h1>
+        <div class="form">{{ form(form) }}</div>
     </div>
+
+</section>
 
 {% endblock %}

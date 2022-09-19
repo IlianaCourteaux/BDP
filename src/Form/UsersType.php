@@ -19,7 +19,7 @@ class UsersType extends AbstractType
         $builder
         ->add('username', TextType::class, [
             'attr'=> [
-                'class' => 'form_control',
+                'class' => 'form_item',
                 'minlength' => '3',
                 'maxlength' => '50',
             ],
@@ -31,9 +31,24 @@ class UsersType extends AbstractType
                 new Assert\Length(['min' => 3, 'max' => 50])
             ]
         ])
+        ->add('discord', TextType::class, [
+            'required' => false,
+            'attr'=> [
+                'class' => 'form_item',
+                'minlength' => '6',
+                'maxlength' => '100',
+            ],
+            'label' => 'Identifiant Discord (modifier si nécéssaire)',
+            'label_attr' => [
+                'class' => 'form_label'
+            ],
+            'constraints' => [
+                new Assert\Length(['min' => 6, 'max' => 100])
+            ]
+        ])
         ->add('email', EmailType::class, [
             'attr'=> [
-                'class' => 'form_control',
+                'class' => 'form_item',
                 'minlength' => '2',
                 'maxlength' => '180',
             ],
@@ -48,7 +63,16 @@ class UsersType extends AbstractType
             ]
         ])
         ->add('password', PasswordType::class, [
-            'label' => "Confirmez votre mot de passe"
+            'attr'=> [
+                'class' => 'form_item',
+            ],
+            'label' => "Confirmez votre mot de passe",
+            'label_attr' => [
+                'class' => 'form_label'
+            ],
+            'constraints' => [
+                new Assert\NotBlank()
+            ]
     ])
         // ->add('password', PasswordType::class, [
         //     'attr' => [
@@ -61,7 +85,7 @@ class UsersType extends AbstractType
         // ])
         ->add('submit', SubmitType::class, [
             'attr' => [
-                'class' => 'button'
+                'class' => 'submit_button'
             ]
         ])
     ;
