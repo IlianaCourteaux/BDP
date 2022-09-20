@@ -20,7 +20,7 @@ class ContactType extends AbstractType
         $builder
             ->add('email', EmailType::class, [
                 'attr'=> [
-                    'class' => 'form_control',
+                    'class' => 'form_item',
                     'minlength' => '2',
                     'maxlength' => '180',
                 ],
@@ -36,7 +36,7 @@ class ContactType extends AbstractType
             ])
             ->add('username', TextType::class, [
                 'attr'=> [
-                    'class' => 'form_control',
+                    'class' => 'form_item',
                     'minlength' => '3',
                     'maxlength' => '50',
                 ],
@@ -50,7 +50,7 @@ class ContactType extends AbstractType
             ])
             ->add('discord',TextType::class, [
                 'attr'=> [
-                    'class' => 'form_control',
+                    'class' => 'form_item',
                     'minlength' => '3',
                     'maxlength' => '50',
                 ],
@@ -63,6 +63,9 @@ class ContactType extends AbstractType
                 ]
             ])
             ->add('object', ChoiceType::class, [
+                'attr' => [
+                    'class' => 'form_item form_choice',
+                ],
                 'choices'  => [
                     'Candidature en guilde' => 'Candidature',
                     'Demande de renseignements' => 'Renseignements',
@@ -75,7 +78,7 @@ class ContactType extends AbstractType
             ])
             ->add('message', TextareaType::class, [
                 'attr' => [
-                    'class' => 'form_control',
+                    'class' => 'form_item form_message',
                 ],
                 'label' => 'Message',
                 'label_attr' => [
@@ -87,7 +90,7 @@ class ContactType extends AbstractType
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => [
-                    'class' => 'button'
+                    'class' => 'submit_button'
                 ],
                 'label' => 'Envoyer'
             ]);;

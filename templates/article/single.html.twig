@@ -31,11 +31,11 @@
         </div>
     {% endfor %} #}
     
-    <div>{{ form(commentForm) }}</div>
+    <div class="comment_form">{{ form(commentForm) }}</div>
 
     <h3>{{ article.comments|length }} commentaire(s)</h3>
 
-    <div class="comment-list">
+    <div class="comment_list">
         {% for comment in comments %}
             {% include 'comments/index.html.twig' with [comment] %}
         {% endfor %}

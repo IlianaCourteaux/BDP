@@ -55,6 +55,7 @@ header img {
 header #logo {
     display: flex;
     flex-wrap: nowrap;
+    max-height: 50px;
 }
 
 header a{
@@ -88,6 +89,20 @@ header ul {
     align-self: center;
 } 
 
+.hamburger {
+    display: none;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: white;
+}
+
 /*------------------------FOOTER-------------------------*/
      
 footer {
@@ -101,8 +116,6 @@ footer {
 /* ------------------------------------------------------------ */
 /* ------ Déclarations spécifiques pour la page d'accueil ------*/
 /* ------------------------------------------------------------ */
-
-/* ----------------------HAUT DE PAGE------------------------- */
 
 /* Caractéristiques générales */
 
@@ -375,7 +388,6 @@ section img{
     border-radius: 0.25rem;
 }
 
-
 .submit_button {
     border-style: none;
     color: white;
@@ -391,3 +403,7 @@ section img{
 .submit_button:hover {
     background-color: rgb(216, 173, 109);
 }
+
+/* ------------------------------------------------------------ */
+/* ------ Déclarations spécifiques pour les commentaires ------ */
+/* ------------------------------------------------------------ */

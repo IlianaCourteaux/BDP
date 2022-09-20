@@ -1,15 +1,15 @@
 {% set username = comment.user.username %}
 
 <div id="comment-{{ comment.id }}">
-        <div>
+        <div class="comment_item">
             
-            <h5>
-                    <span class="comment-author">{{ username }}</span>
+            <h5 class="comment_title">
+                <span class="comment-author">{{ username }}</span>
             </h5>
             
-            <p>{{ comment.createdAt|date('d M Y à H:i') }}</p>
+            <p class="comment_date">{{ comment.createdAt|date('d M Y à H:i') }}</p>
 
-            <p>{{ comment.text }}</p>
+            <p class="comment_message">{{ comment.text }}</p>
 
         </div>
 </div>

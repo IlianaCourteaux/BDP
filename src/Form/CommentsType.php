@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType as TypeTextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\CallbackTransformer;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class CommentsType extends AbstractType
 {
@@ -20,14 +21,32 @@ class CommentsType extends AbstractType
     {
         $builder
             ->add('user', TypeTextType::class, [
-                'label' => 'Pseudo'
+                'attr' => [
+                    'class' => 'form_item',
+                ],
+                'label' => 'Pseudo',
+                'label_attr' => [
+                    'class' => 'form_label'
+                ],
+                'constraints' => [
+                    new Assert\NotBlank()
+                ]
             ])
             ->add('text', CKEditorType::class, [
-                'label' => 'Commentaire'
+                'attr' => [
+                    'class' => 'form_item',
+                ],
+                'label' => 'Commentaire',
+                'label_attr' => [
+                    'class' => 'form_label'
+                ],
+                'constraints' => [
+                    new Assert\NotBlank()
+                ]
             ])
             ->add('article', HiddenType::class)
             ->add('submit', SubmitType::class, [
-                'attr' => ['class' => 'button'],
+                'attr' => ['class' => 'submit_button'],
                 'label' => 'Envoyer'
             ]);
 
