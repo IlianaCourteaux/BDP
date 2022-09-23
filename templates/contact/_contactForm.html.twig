@@ -1,12 +1,11 @@
 <div class="contact_form">
 
+	{{ form(contact_form) }}
+
 	{% for message in app.flashes('success') %}
 		<div class="alert alert-success mt-4">
 			{{ message }}
 		</div>
 	{% endfor %}
-
-	{# <h1 class="form_title">Contacte-nous !</h1> #}
-	{{ form(contact_form) }}
 
 </div>

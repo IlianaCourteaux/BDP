@@ -2,6 +2,7 @@
 
 {% block body %}
 
+{# Corps de l'article #}
 <div class="single-article">
 
 <img class="banner" src="{{ asset('img/uploads/' ~ article.banner.fileName) }}" alt="{{ article.title }}">
@@ -19,28 +20,44 @@
 </div>
 
 <div>
-<p class="text">{{ article.text }}</p>
+<p class="text">{{ article.text|nl2br }}</p>
 </div>
 
+{# Formulaire de commentaires #}
 <section class="comment">
     <h3>Laisser un commentaire</h3>
 
-    {# {% for message in app.flashes('success') %}
+    {% for message in app.flashes('success') %}
         <div>
             {{ message }}
         </div>
-    {% endfor %} #}
+    {% endfor %}
     
     <div class="comment_form">{{ form(commentForm) }}</div>
 
     <h3>{{ article.comments|length }} commentaire(s)</h3>
 
+{# Liste des commentaires #}
     <div class="comment_list">
         {% for comment in comments %}
-            {% include 'comments/index.html.twig' with [comment] %}
+            {% if comment.parent == null %} 
+                {# {% include 'comments/index.html.twig' with [comment] %} #}
+                <div class="comment_item">
+                    <p class="comment_info"><span class="comment_author">{{ comment.user.username }}</span>, le {{ comment.createdAt|date('d M Y à H:i') }}</p>
+                    <p class="comment_message">{{ comment.text|raw }}</p>
+                    <p> <a href="#comment_form" class="submit_button" data-reply data-id="{{ comment.id }}">Répondre</a></p>
+                </div>
+                {% for reply in comment.replies %}
+                <div class="comment_item">
+                    <p class="comment_info">Réponse de <span class="comment_author">{{ reply.user.username }}</span>, le {{ reply.createdAt|date('d M Y à H:i') }}</p>
+                    <p class="comment_message">{{ reply.text|raw }}</p>
+                </div>
+                {% endfor %}
+            {% endif %}
         {% endfor %}
     </div>
 
+{# Pagination #}
     <div class="row">
         <div>
             {{ knp_pagination_render(comments) }}
@@ -51,4 +68,17 @@
 
 </div>
 
+{% endblock %}
+
+{# Script pour réponses aux commentaires #}
+{% block javascripts %}
+    <script>
+        window.onload = () => {
+            document.querySelectorAll("[data-reply]").forEach(element => {
+                element.addEventListener("click", function(){
+                    document.querySelector("#comments_parent").value = this.dataset.id;
+                })
+            })
+        }
+    </script>
 {% endblock %}

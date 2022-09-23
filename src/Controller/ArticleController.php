@@ -13,9 +13,11 @@ use App\Repository\ArticleRepository;
 use App\Service\ArticleService;
 use App\Service\CommentsService;
 use Doctrine\ORM\EntityManagerInterface;
+use DateTime;
 
 class ArticleController extends AbstractController
 {
+
     #[Route('/articles', name: 'app_articles')]
     public function index(ManagerRegistry $manager, ArticleService $articleService): Response
     {
@@ -24,31 +26,43 @@ class ArticleController extends AbstractController
             'articlesList' => $articleService->getPaginatedArticles(),
         ]);
     }
-
-    #[Route('articles/{slug}', name: 'app_single', methods: ['GET', 'POST'])]
+    
+    #[Route('article/{slug}', name: 'app_single', methods: ['GET', 'POST'])]
     public function single(?Article $article, EntityManagerInterface $emi, CommentsService $commentsService):Response
     {
         if(!$article) {
             return $this->redirectToRoute('app_home');
         }
 
+        // Formulaire de commentaires
         $comment = new Comments($article);
 
         $commentForm = $this->createForm(CommentsType::class, $comment);
         
-        // if($commentForm->isSubmitted() && $commentForm->isValid()) {
-        //     $comments = $commentForm->getData();
+        if($commentForm->isSubmitted() && $commentForm->isValid()) {
+            $comment->setCreatedAt(new DateTime());
+            $comment->setArticle($article);
 
-        //     $this->addFlash(
-        //         'success',
-        //         'Votre commentaire a bien été envoyé'
-        //     );
+            $parentid = $commentForm->get("parent")->getData();
 
-        //     $emi->persist($comments);
-        //     $emi->flush();
+            $emi = $this->getDoctrine()->getManager();
 
-        //     return $this->redirectToRoute('app_single'); 
-        // }    
+            if($parentid != null) {
+            $parent = $emi->getRepository(Comments::class)->find($parentid);
+            }
+
+            $comment->setParent($parent ?? null);
+
+            $emi->persist($comment);
+            $emi->flush();
+
+            $this->addFlash(
+                'success',
+                'Votre commentaire a bien été envoyé'
+            );
+
+            return $this->redirectToRoute('app_single', ['slug' => $article->getSlug()]); 
+        }    
 
         return $this->renderForm('article/single.html.twig',[
             'article' => $article,

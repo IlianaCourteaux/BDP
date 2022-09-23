@@ -3,13 +3,11 @@
 <div id="comment-{{ comment.id }}">
         <div class="comment_item">
             
-            <h5 class="comment_title">
-                <span class="comment-author">{{ username }}</span>
-            </h5>
-            
-            <p class="comment_date">{{ comment.createdAt|date('d M Y à H:i') }}</p>
+            <p class="comment_info"><span class="comment-author">{{ username }}</span>, le {{ comment.createdAt|date('d M Y à H:i') }}</p>
 
-            <p class="comment_message">{{ comment.text }}</p>
+            <p class="comment_message">{{ comment.text|raw }}</p>
+
+            <p> <a href="#comment_form" class="submit_button" data-reply data-id="{{ comment.id }}">Répondre</a></p>
 
         </div>
 </div>

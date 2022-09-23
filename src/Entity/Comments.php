@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CommentsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CommentsRepository::class)]
@@ -13,11 +15,8 @@ class Comments
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $text;
-
     #[ORM\Column(type: 'text')]
-    private $image;
+    private $text;
 
     #[ORM\Column(type: 'datetime_immutable')]
     private $createdAt;
@@ -28,9 +27,16 @@ class Comments
     #[ORM\ManyToOne(targetEntity: Users::class, inversedBy: 'comments')]
     private $user;
 
+    #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'replies')]
+    private $parent;
+
+    #[ORM\OneToMany(mappedBy: 'parent', targetEntity: self::class)]
+    private $replies;
+
     public function __construct(Article $article)
     {
         $this->article = $article;
+        $this->replies = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -46,18 +52,6 @@ class Comments
     public function setText(string $text): self
     {
         $this->text = $text;
-
-        return $this;
-    }
-
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    public function setImage(string $image): self
-    {
-        $this->image = $image;
 
         return $this;
     }
@@ -94,6 +88,48 @@ class Comments
     public function setUser(?Users $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getParent(): ?self
+    {
+        return $this->parent;
+    }
+
+    public function setParent(?self $parent): self
+    {
+        $this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, self>
+     */
+    public function getReplies(): Collection
+    {
+        return $this->replies;
+    }
+
+    public function addReply(self $reply): self
+    {
+        if (!$this->replies->contains($reply)) {
+            $this->replies[] = $reply;
+            $reply->setParent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReply(self $reply): self
+    {
+        if ($this->replies->removeElement($reply)) {
+            // set the owning side to null (unless already changed)
+            if ($reply->getParent() === $this) {
+                $reply->setParent(null);
+            }
+        }
 
         return $this;
     }

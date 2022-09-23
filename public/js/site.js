@@ -19,6 +19,7 @@ boite.forEach(boi => {
 
 });
 
+
 // MENU HAMBURGER MEDIA QUERIES
 
 const hamburger = document.querySelector(".hamburger");

@@ -60,7 +60,8 @@ class ContactType extends AbstractType
                 ],
                 'constraints' => [
                     new Assert\Length(['min' => 3, 'max' => 50])
-                ]
+                ],
+                'required' => false
             ])
             ->add('object', ChoiceType::class, [
                 'attr' => [
@@ -71,7 +72,7 @@ class ContactType extends AbstractType
                     'Demande de renseignements' => 'Renseignements',
                     'Autre sujet' => 'Autre',
                 ],
-                'label' => "Sujet",
+                'label' => "Sélectionnez le sujet de votre demande",
                 'label_attr' => [
                     'class' => 'form_label'
                 ]

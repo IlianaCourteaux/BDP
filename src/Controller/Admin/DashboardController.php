@@ -32,6 +32,12 @@ class DashboardController extends AbstractDashboardController
     #[IsGranted('ROLE_ADMIN')]
     public function index(): Response
     {
+        // if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
+        //     return $this->redirectToRoute('login');
+        // }
+
+        // $controller = $this->isGranted('ROLE_ADMIN') ? MenuCrudController::class : ArticleCrudController::class;
+        
         $url = $this->adminUrlGenerator
             ->setController(ArticleCrudController::class)
             ->generateUrl();

@@ -45,9 +45,14 @@ class CommentsType extends AbstractType
                 ]
             ])
             ->add('article', HiddenType::class)
+            ->add('parent', HiddenType::class, [
+                'mapped' => false
+            ])
             ->add('submit', SubmitType::class, [
-                'attr' => ['class' => 'submit_button'],
-                'label' => 'Envoyer'
+                'attr' => [
+                    'class' => 'submit_button'
+                ],
+                'label' => 'Poster mon commentaire'
             ]);
 
         // Pour essayer d'avoir l'ID plutôt que le titre de l'article de passé dans le hiddentype ?

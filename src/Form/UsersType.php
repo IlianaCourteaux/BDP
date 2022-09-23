@@ -74,15 +74,6 @@ class UsersType extends AbstractType
                 new Assert\NotBlank()
             ]
     ])
-        // ->add('password', PasswordType::class, [
-        //     'attr' => [
-        //         'class' => 'form_control'
-        //     ],
-        //     'label' => "Confirmez votre mot de passe",
-        //     'label_attr' => [
-        //         'class' => 'form_label'
-        //     ]
-        // ])
         ->add('submit', SubmitType::class, [
             'attr' => [
                 'class' => 'submit_button'
