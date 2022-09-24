@@ -22,7 +22,7 @@ class CommentsType extends AbstractType
         $builder
             ->add('user', TypeTextType::class, [
                 'attr' => [
-                    'class' => 'form_item',
+                    'class' => 'form_item comment-user-item',
                 ],
                 'label' => 'Pseudo',
                 'label_attr' => [
@@ -34,7 +34,7 @@ class CommentsType extends AbstractType
             ])
             ->add('text', CKEditorType::class, [
                 'attr' => [
-                    'class' => 'form_item',
+                    'class' => 'form_item comment-text-item',
                 ],
                 'label' => 'Commentaire',
                 'label_attr' => [
@@ -50,7 +50,7 @@ class CommentsType extends AbstractType
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => [
-                    'class' => 'submit_button'
+                    'class' => 'submit_button comment_submit_button'
                 ],
                 'label' => 'Poster mon commentaire'
             ]);

@@ -22,7 +22,7 @@ class ArticleService
     {
         $request = $this->requestStack->getMainRequest();
         $page = $request->query->getInt('page', 1);
-        $limit = 5;
+        $limit = 6;
 
         $articlesQuery = $this->articleRep->findForPagination($category);
 

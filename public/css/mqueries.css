@@ -2,10 +2,13 @@
 
 @media only screen and (max-width: 800px) {
 
+    /* ---------- NAVBAR ---------- */
+
+    /* Menu Hamburger */
         .nav-menu {
             position: fixed;
             left: -100%;
-            top: 4.4rem;
+            top: 3.5rem;
             flex-direction: column;
             background-color: rgba(132, 7, 78, 1);
             width: 100%;
@@ -19,16 +22,15 @@
         }
     
         .nav-item {
-            margin: 0.5rem 0;
-        }
-
-        .nav-link {
-            color: white;
+            margin: 1rem 0;
         }
     
         .hamburger {
             display: block;
             cursor: pointer;
+            position: fixed;
+            right: 10px;
+            top: 12px;
         }
 
         .hamburger.active .bar:nth-child(2) {
@@ -42,10 +44,41 @@
         .hamburger.active .bar:nth-child(3) {
             transform: translateY(-8px) rotate(-45deg);
         }
-    
+
+        /* Reste de la navbar */
+        header {
+            line-height: 15px;
+        }
+
+        .navbar {
+            padding: 0 44px 0 0;
+        }
+
+        header a {
+            padding: 8px 10px 8px 10px;
+        }
+
+        .nav-account-icon {
+            display: block;
+        }
+
+        .nav-account-text {
+            display: none;
+        }
+
+        .nav-logo-img {
+            width: 40px;
+            height: 40px;
+        }
+
+        /* ---------- Pages ---------- */
+        .single-page .page-img {
+            max-width: 300px;
+            padding: 10% 0 2% 0;
+        }
 }
 
-/* MEDIA QUERIES POUR AFFICHAGE MOBILE ET TABLETTE */
+/* MEDIA QUERIES POUR AFFICHAGE MOBILE */
 
 @media only screen and (max-width: 600px) {
 

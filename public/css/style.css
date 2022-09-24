@@ -10,6 +10,7 @@
 body {
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
+    height:100%
 }
 
 main {
@@ -47,12 +48,12 @@ header {
     box-shadow: 0 0 5px black;
 }
 
-header img {
+.nav-logo-img {
     width: 50px;
     margin-right: 10px;
 }
 
-header #logo {
+.nav-logo {
     display: flex;
     flex-wrap: nowrap;
     max-height: 50px;
@@ -70,12 +71,12 @@ header a:hover {
     color: rgb(216, 173, 109);
 }
 
-header .titre {
+.nav-titre {
     align-self: center;
     padding-top: 5px;
 }
 
-header nav {
+.navbar {
     flex: 75;
     display: flex;
     justify-content: space-between;
@@ -88,6 +89,10 @@ header ul {
     justify-content: flex-end;
     align-self: center;
 } 
+
+.nav-account-icon {
+    display: none;
+}
 
 .hamburger {
     display: none;
@@ -119,7 +124,7 @@ footer {
 
 /* Caractéristiques générales */
 
-h3, h4, h5{
+h3, h4, h5, .page-title {
     text-align: center;
     color: rgb(132, 7, 78);
 }
@@ -244,11 +249,16 @@ section img{
 /* ---- Déclarations spécifiques pour la page all articles ---- */
 /* ------------------------------------------------------------ */
 
+.page-title {
+    text-align: center;
+}
+
 #allarticles {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-self: center;
+    margin: 0 10%;
 }
 
 .card {
@@ -314,7 +324,7 @@ section img{
     background-color: rgba(243, 213, 229, 36%);
 }
 
-.single-article div {
+.article-items {
     padding: 0 1%;
     display: flex;
     flex-wrap: wrap;
@@ -337,15 +347,80 @@ section img{
     max-width: 1000px;
     padding: 40px 60px;
     background-color: white;
+    margin-bottom: 2%;
 }
 
-.single-article .comment {
-    padding: 30px
+.comment_form, .comment_list{
+    display: block;
+    padding: 1% 30%;
 }
+
+.comment_form .comment-user-item {
+    min-width: 20rem;
+}
+
+.comment_form .comment-text-item {
+    min-width: 30rem;
+    height: 150px;
+}
+
+.comment_form .comment_submit_button {
+    margin-left: 36%;
+    margin-bottom: 3%;
+}
+
+.comment_list .comment_item {
+    margin: 5%;
+    padding: 3%;
+    border: 1px solid rgb(216, 216, 216);
+    background-color: white;
+    border-radius: 10px;
+}
+
+.comment_list .comment_author {
+    font-weight: bold;
+    color: rgb(132, 7, 78);
+}
+
+.comment_list .comment_reply {
+    margin-left: 10%;
+}
+
+.comment_list .comment_info, .comment_list .comment_message {
+    padding: 2%;
+}
+
+.comment_parent .comment_message {
+    padding-bottom: 5%;
+}
+
+.comment_list .comment_reply_button {
+    text-decoration: none;
+    margin-left: 8%;
+}
+
+.div-paginator {
+    padding-bottom: 1.5%;
+}
+
+
 
 /* ------------------------------------------------------------ */
 /* --------- Déclarations spécifiques pour les pages ---------- */
 /* ------------------------------------------------------------ */
+
+.single_page {
+    display: block;
+}
+
+.page-img {
+    max-width: 600px;
+    padding: 2% 0;
+}
+
+.single-page .text {
+    padding: 1% 20% 3% 20%;
+}
 
 /* ------------------------------------------------------------ */
 /* ------ Déclarations spécifiques pour les formulaires ------- */

@@ -1,19 +1,19 @@
 // PAGE TOUS LES ARTICLES : BOUTON LIRE
 
-let boite = document.querySelectorAll(".card");
+let card = document.querySelectorAll(".card");
 
-boite.forEach(boi => {
-    boi.addEventListener("mouseenter", function() {
-        // boi.style.backgroundColor = "rgba(0, 0, 0, 0.3)";
-        boi.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.2)";
-        let show = boi.children[1];
+card.forEach(crd => {
+    crd.addEventListener("mouseenter", function() {
+        crd.style.backgroundColor = "rgba(216, 173, 109, 30%)";
+        crd.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.4)";
+        let show = crd.children[1];
         show.style.visibility = 'visible';
     });
 
-    boi.addEventListener("mouseleave", function() {
-        // boi.style.backgroundColor = "initial";
-        boi.style.boxShadow = "0 4px 8px 0 rgba(0,0,0,0.2)";
-        let show = boi.children[1];
+    crd.addEventListener("mouseleave", function() {
+        crd.style.backgroundColor = "initial";
+        crd.style.boxShadow = "0 4px 8px 0 rgba(0,0,0,0.2)";
+        let show = crd.children[1];
         show.style.visibility = 'hidden';
     });
 

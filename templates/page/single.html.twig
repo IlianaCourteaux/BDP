@@ -4,16 +4,17 @@
 
 {% block body %}
 
-<div class="single-article">
-    <div class="text">
-        <img class="logo" src="{{ asset('img/uploads/' ~ page.image.fileName) }}" alt="{{ page.title }}">
-
-        <div>
-            <h1 class="title">{{ page.title }}</h1>
+<div class="single-page">
+    <div class="">
+    <div class="article-items">
+        <img class="page-img" src="{{ asset('img/uploads/' ~ page.image.fileName) }}" alt="{{ page.title }}">
+        </div>
+        <div class="article-items">
+            <h1 class="page-title">{{ page.title }}</h1>
         </div>
 
-        <div>
-            <p>{{ page.text }}</p>
+        <div class="article-items">
+            <p class="text">{{ page.text|nl2br }}</p>
         </div>
     </div>
 </div>
