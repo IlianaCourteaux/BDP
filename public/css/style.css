@@ -350,6 +350,7 @@ section img{
     margin-bottom: 2%;
 }
 
+/* Déclarations spécifiques pour l'espace commentaires */
 .comment_form, .comment_list{
     display: block;
     padding: 1% 30%;
@@ -479,6 +480,3 @@ section img{
     background-color: rgb(216, 173, 109);
 }
 
-/* ------------------------------------------------------------ */
-/* ------ Déclarations spécifiques pour les commentaires ------ */
-/* ------------------------------------------------------------ */
