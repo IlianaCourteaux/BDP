@@ -8,7 +8,6 @@ use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
@@ -17,12 +16,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class ArticleCrudController extends AbstractCrudController
 {
-
-    // public const ARTICLES_BASE_PATH ='img/upload/photo';
-    // public const ARTICLES_UPLOAD_DIR ='public/img/upload/photo';
-    // public const BANNER_BASE_PATH ='img/upload/banner'; 
-    // public const BANNER_UPLOAD_DIR ='public/img/upload/banner';
-
     public static function getEntityFqcn(): string
     {
         return Article::class;
@@ -48,16 +41,6 @@ class ArticleCrudController extends AbstractCrudController
                 ->setFormType(CKEditorType::class),
             AssociationField::new('image'),
             AssociationField::new('banner', 'Bannière'),
-            // ImageField::new('photo', 'Image')
-            //     ->setBasePath(self::ARTICLES_BASE_PATH)
-            //     ->setUploadDir(self::ARTICLES_UPLOAD_DIR)
-            //     ->setSortable(false)
-            //     ->setRequired(false),
-            // ImageField::new('banner', 'Bannière')
-            //     ->setBasePath(self::BANNER_BASE_PATH)
-            //     ->setUploadDir(self::BANNER_UPLOAD_DIR)
-            //     ->setSortable(false)
-            //     ->setRequired(false),
             TextField::new('keywords', 'Mots-clés')->setSortable(false),
             AssociationField::new('category', 'Catégorie'),
             AssociationField::new('subCategories', 'Sous-Catégories'),
@@ -69,7 +52,7 @@ class ArticleCrudController extends AbstractCrudController
 
     public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
     {
-        if ($entityInstance instanceof Article) return;
+        if (!$entityInstance instanceof Article) return;
 
         $entityInstance->setCreatedAt(new \DateTimeImmutable);
 

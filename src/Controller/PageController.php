@@ -20,11 +20,5 @@ class PageController extends AbstractController
             'page' => $page,
         ]);
     }
-
-    // #[Route('/charte-de-guilde', name: 'app_rules')]
-    // public function rules(): Response
-    // {
-    //     return $this->render('page/single.html.twig');
-    // }
     
 }

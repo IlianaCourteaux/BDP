@@ -34,9 +34,7 @@ class SubCategoryCrudController extends AbstractCrudController
 
     public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
     {
-        if ($entityInstance instanceof SubCategory) return;
-
-        $entityInstance->setCreatedAt(new \DateTimeImmutable);
+        if (!$entityInstance instanceof SubCategory) return;
 
         $entityManager->persist($entityInstance);
         $entityManager->flush();

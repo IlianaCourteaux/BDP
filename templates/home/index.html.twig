@@ -26,11 +26,6 @@
         </div>
     </section>
 
-{# Image SVG vague 
-<div>
-<img id="fond" src="{{ asset('img/wave3.svg')}}">
-</div> #}
-
 {# ---------- BLOC VALEURS ---------- #}
 
 	<section id="values">
@@ -54,7 +49,7 @@
             </div>
         </div>
 	    <div class="row">
-		    <a href="#" class="button">Découvrez notre charte</a>
+		    <a href="{{ path('app_page', {slug: 'charte-de-guilde'}) }}" class="button">Découvrez notre charte</a>
 	    </div>
     </section>
 
@@ -68,7 +63,7 @@
         <div class="container">
             <div class="row">
                 <div>
-                    <img src="{{ asset('img/raid_sollance.png') }}" alt="Les Bâtonnets après avoir conquis Sollance en Vétéran Hardmode">
+                    <img src="{{ asset('img/raid_archive.png') }}" alt="Les Bâtonnets après avoir conquis Sollance en Vétéran Hardmode">
                 </div>
                 <div>
                     <h4>Activité 1</h4>
@@ -90,7 +85,7 @@
                     </p>
                 </div>
                 <div>
-                    <img src="{{ asset('img/raid_sollance.png') }}" alt="Les Bâtonnets après avoir conquis Sollance en Vétéran Hardmode">
+                    <img src="{{ asset('img/housing_jeu.png') }}" alt="Les Bâtonnets après avoir conquis Sollance en Vétéran Hardmode">
                 </div>
             </div>
         </div>
@@ -100,7 +95,7 @@
         <div class="container">
             <div class="row">
                 <div>
-                    <img src="{{ asset('img/raid_sollance.png') }}" alt="Les Bâtonnets après avoir conquis Sollance en Vétéran Hardmode">
+                    <img src="{{ asset('img/craft.png') }}" alt="Les Bâtonnets après avoir conquis Sollance en Vétéran Hardmode">
                 </div>
                 <div>
                     <h4>Activité 3</h4>
@@ -125,7 +120,7 @@
 	                </div>
                 </div>
                 <div>
-                    <img src="{{ asset('img/raid_sollance.png') }}" alt="Les Bâtonnets après avoir conquis Sollance en Vétéran Hardmode">
+                    <img src="{{ asset('img/donjon.png') }}" alt="Les Bâtonnets après avoir conquis Sollance en Vétéran Hardmode">
                 </div>
             </div>
         </div>
@@ -160,45 +155,10 @@
     {# ---------- BLOC CONTACT ---------- #}
 
     <section id="contact">
-	<div>
-    <h3>Rejoignez-nous</h3>
-    {# {% include "contact/_contactForm.html.twig" %} #}
-    </div>
+	    <div>
+            <h3>Rejoignez-nous</h3>
+            {# {% include "contact/_contactForm.html.twig" %} #}
+        </div>
     </section>
-
-    {# <div>
-    <form id="contact-form" method="post">
-        
-        <div class="contact-line">
-            <div class="contact-name">
-                <input type="text" id="name" placeholder="Votre identifiant TESO" required>
-            </div>
-
-            <div class="contact-email">
-                <input type="email" id="email" placeholder="Votre adresse e-mail" required>
-            </div>
-        </div>
-
-        <div class="contact-line">
-            <div class="contact-subject">
-                <select id="subjects" placeholder="Sélectionnez un sujet" multiple>
-					<option value="join">Rejoindre la guilde</option>
-  					<option value="ask">Demande de renseignements</option>
-  					<option value="other">Autre</option>
-				</select>
-            </div>
-
-        <div class="contact-line">
-            <textarea id="Message" placeholder="Présentez-vous !" required></textarea>
-        </div>
-
-        <div>
-            <button type="submit">Envoyer</button>
-        </div>
-
-    </form>
-    </div>
-
-</div> #}
 
 {% endblock %}

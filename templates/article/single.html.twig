@@ -23,7 +23,7 @@
         </div>
 
         <div class="article-items">
-            <p class="text">{{ article.text|nl2br }}</p>
+            <div class="text">{{ article.text|raw|nl2br }}</div>
         </div>
     </section>
 
@@ -31,11 +31,7 @@
         {# Formulaire de commentaires #}
         <h3>Laisser un commentaire</h3>
 
-        {% for message in app.flashes('success') %}
-            <div>
-                {{ message }}
-            </div>
-        {% endfor %}
+        {% include 'home/flash.html.twig' %}
         
         <div class="comment_form">{{ form(commentForm) }}</div>
 
@@ -45,7 +41,6 @@
         <div class="comment_list">
             {% for comment in comments %}
                 {% if comment.parent == null %} 
-                    {# {% include 'comments/index.html.twig' with [comment] %} #}
                     <div class="comment_item comment_parent">
                         <p class="comment_info"><span class="comment_author">{{ comment.user.username }}</span>, le {{ comment.createdAt|date('d M Y à H:i') }}</p>
                         <p class="comment_message">{{ comment.text|raw }}</p>

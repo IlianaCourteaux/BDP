@@ -2,7 +2,6 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Article;
 use App\Entity\Category;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
@@ -35,9 +34,7 @@ class CategoryCrudController extends AbstractCrudController
 
     public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
     {
-        if ($entityInstance instanceof Category) return;
-
-        $entityInstance->setCreatedAt(new \DateTimeImmutable);
+        if (!$entityInstance instanceof Category) return;
 
         $entityManager->persist($entityInstance);
         $entityManager->flush();

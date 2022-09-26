@@ -6,11 +6,7 @@
 
 <section class="form_page">
 
-        {% for message in app.flashes('success') %}
-        <div>
-            {{ message }}
-        </div>
-        {% endfor %}
+    {% include 'home/flash.html.twig' %}
 
     <div class="form_section">
         <h1 class="form_title">Connexion</h1>

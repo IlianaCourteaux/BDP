@@ -5,20 +5,13 @@
 {% block body %}
 <section class="form_page">
 
-        {% for message in app.flashes('success') %}
-        <div>
-            {{ message }}
-        </div>
-        {% endfor %}
-
-        {# {% for message in app.flashes('warning') %}
-        <div>
-            {{ message }}
-        </div>
-        {% endfor %} #}
-
     <div class="form_section">
         <h1 class="form_title">Modifier mon profil</h1>
+
+        <div>
+            {% include 'home/flash.html.twig' %}
+        </div>
+
         <div class="form">{{ form(form) }}</div>
     </div>
 

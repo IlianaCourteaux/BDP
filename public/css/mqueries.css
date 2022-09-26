@@ -1,6 +1,6 @@
 /* MEDIA QUERIES POUR AFFICHAGE MOBILE ET TABLETTE */
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 768px) {
 
     /* ---------- NAVBAR ---------- */
 
@@ -80,6 +80,6 @@
 
 /* MEDIA QUERIES POUR AFFICHAGE MOBILE */
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 480px) {
 
 }

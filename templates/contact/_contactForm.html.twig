@@ -1,11 +1,4 @@
 <div class="contact_form">
-
+	{% include 'home/flash.html.twig' %}
 	{{ form(contact_form) }}
-
-	{% for message in app.flashes('success') %}
-		<div class="alert alert-success mt-4">
-			{{ message }}
-		</div>
-	{% endfor %}
-
 </div>

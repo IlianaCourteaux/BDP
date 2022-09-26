@@ -2,25 +2,22 @@
 
 namespace App\Form;
 
-use App\Entity\Article;
 use App\Entity\Comments;
-use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\TextType as TypeTextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class CommentsType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('user', TypeTextType::class, [
+            ->add('user', TextType::class, [
                 'attr' => [
                     'class' => 'form_item comment-user-item',
                 ],
@@ -32,7 +29,7 @@ class CommentsType extends AbstractType
                     new Assert\NotBlank()
                 ]
             ])
-            ->add('text', CKEditorType::class, [
+            ->add('text', TextareaType::class, [
                 'attr' => [
                     'class' => 'form_item comment-text-item',
                 ],
@@ -54,13 +51,6 @@ class CommentsType extends AbstractType
                 ],
                 'label' => 'Poster mon commentaire'
             ]);
-
-        // Pour essayer d'avoir l'ID plutôt que le titre de l'article de passé dans le hiddentype ?
-        // $builder->get('article')
-        //     ->addModelTransformer(new CallbackTransformer(
-        //         fn (Article $article) => $article->getId(),
-        //         fn (Article $article) => $article->getTitle()
-        //     ));
     }
 
     public function configureOptions(OptionsResolver $resolver): void

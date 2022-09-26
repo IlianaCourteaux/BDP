@@ -32,8 +32,6 @@ main {
     background-color: rgb(216, 173, 109);
 }
 
-
-
 /* ----------------------MENU DE NAVIGATION---------------------*/
      
 header {
@@ -59,7 +57,7 @@ header {
     max-height: 50px;
 }
 
-header a{
+header a, .nav-link{
     color: rgb(255, 255, 255);
     text-decoration: none;
     letter-spacing: 2px;
@@ -67,7 +65,7 @@ header a{
     padding: 10px 20px 10px 20px;
 }
 
-header a:hover {
+header a:hover, .nav-link:hover {
     color: rgb(216, 173, 109);
 }
 
@@ -89,6 +87,31 @@ header ul {
     justify-content: flex-end;
     align-self: center;
 } 
+
+input[type=checkbox] {
+    display:none;
+}
+
+.dropdown-content {
+  display: none;
+}
+
+.dropdown-menu:checked~ .dropdown-content{
+    display:block;
+}
+
+.dropdown div{
+    float: right;
+    padding-top: 20px;
+    padding-bottom: 7px;
+}
+
+.dropdown-content{
+    position: absolute;
+    background-color: rgba(132, 7, 78, 1); 
+    min-width: 160px;
+    box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.2);
+  }
 
 .nav-account-icon {
     display: none;
@@ -227,24 +250,6 @@ section img{
     font-size: x-large;
 }
 
-/* Caractéristiques spécifiques : vague SVG */
-
-/* #presentation {
-    padding: 1%;
-}
-
-#fond {
-    width: 100%;
-    position: absolute;
-    left: 0;
-    bottom: 42%;
-    display: block;
-}
-
-#values {
-    margin-top: 4.5%;
-} */
-
 /* ------------------------------------------------------------ */
 /* ---- Déclarations spécifiques pour la page all articles ---- */
 /* ------------------------------------------------------------ */
@@ -277,10 +282,6 @@ section img{
     max-width: 350px;
 }
 
-/* .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-} */
-
 .card-content {
     padding: 0px 16px;
     display: flex;
@@ -295,14 +296,6 @@ section img{
     color : black;
     line-height: 30px;
 }
-
-/* Coller le button au bas de la card
-.card-button a {
-    padding: 7px 12px 7px 12px;
-    margin: 30px;
-    position: absolute;
-    bottom: 15px;
-} */
 
 .card a {
     z-index: 1;
@@ -343,7 +336,7 @@ section img{
     color: grey;
 }
 
-.single-article .text {
+.single-article .text, .single-page .text {
     max-width: 1000px;
     padding: 40px 60px;
     background-color: white;
@@ -478,5 +471,28 @@ section img{
 
 .submit_button:hover {
     background-color: rgb(216, 173, 109);
+}
+
+.alert {
+    width: 40%;
+    padding: 12px 16px;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+    margin-bottom: 25px;
+    margin-left: 10%;
+    font-size: 16px;
+}
+
+.alert.alert-success {
+    background-color: rgba(227, 253, 235, 1);
+    border-color: rgba(38, 179, 3, 1);
+    color: rgba(60, 118, 61, 1);
+}
+
+.alert.alert-danger {
+    background-color: rgba(248, 215, 218, 1);
+    border-color: rgba(220, 53, 69, 1);
+    color: rgba(114, 28, 36,1);
 }
 

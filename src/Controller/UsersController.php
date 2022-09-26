@@ -15,28 +15,19 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class UsersController extends AbstractController
 {
-
     /** Modification du profil des utilisateurs*/
-
     #[Security('is_granted("ROLE_USER") and user === selectedUser')]
     #[Route('/user/edit/{id}', name: 'app_user_edit', methods: ['GET', 'POST'])]
     public function edit(Users $selectedUser, Request $request, EntityManagerInterface $emi, UserPasswordHasherInterface $hasher): Response
     {
-        // if(!$this->getUser()){
-        //     return $this->redirectToRoute('app_login');
-        // }
-
-        // if($this->getUser() !== $user){ 
-        //     return $this->redirectToRoute('app_home');
-        // }
-
         $form = $this->createForm(UsersType::class, $selectedUser);
 
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
-            
-            if ($hasher->isPasswordValid($selectedUser, $form->getData()['password'])) {
+
+            if ($hasher->isPasswordValid($selectedUser, $form->getData()->getPassword())) {
+                dd($selectedUser);
                 $selectedUser->setUpdatedAt(new \DateTimeImmutable());
                 $selectedUser = $form->getData();
 
@@ -49,6 +40,7 @@ class UsersController extends AbstractController
                 $emi->flush();
 
             } else {
+
                 $this->addFlash(
                     'warning',
                     'Le mot de passe est incorrect'
@@ -61,18 +53,11 @@ class UsersController extends AbstractController
         ]);
     }
 
+    /** Modification du mot de passe des utilisateurs*/
     #[Security('is_granted("ROLE_USER") and user === selectedUser')]
     #[Route('/user/edit-password/{id}', name: 'app_user_password_edit', methods: ['GET', 'POST'])]
     public function editPassword(Users $selectedUser, Request $request, EntityManagerInterface $emi, UserPasswordHasherInterface $hasher): Response
     {
-        // if (!$this->getUser()) {
-        //     return $this->redirectToRoute('app_login');
-        // }
-
-        // if ($this->getUser() !== $selectedUser) {
-        //     return $this->redirectToRoute('app_home');
-        // }
-        
         $form = $this->createForm(UsersPasswordType::class);
 
         $form->handleRequest($request);
