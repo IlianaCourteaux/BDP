@@ -250,6 +250,34 @@ section img{
     font-size: x-large;
 }
 
+.contact_form {
+    background-color: rgb(184, 112, 149);
+}
+
+.contact-elements {
+    margin-left: 20%;
+}
+
+.contact-elements .form_item {
+    width: 18%;
+    margin-top: 0.5%;
+    margin-bottom: 1.5%;
+}
+
+.contact-elements .form_choice {
+    width: 20%;
+    padding: 0.6%;
+}
+
+.contact-elements .form_message {
+    width: 50%;
+    min-height: 200px;
+}
+
+.contact-elements .submit_button {
+    margin-left: 32%;
+}
+
 /* ------------------------------------------------------------ */
 /* ---- Déclarations spécifiques pour la page all articles ---- */
 /* ------------------------------------------------------------ */
