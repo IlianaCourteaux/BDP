@@ -33,6 +33,9 @@ class Comments
     #[ORM\OneToMany(mappedBy: 'parent', targetEntity: self::class)]
     private $replies;
 
+    #[ORM\Column(type: 'string', length: 50)]
+    private $username;
+
     public function __construct(Article $article)
     {
         $this->article = $article;
@@ -130,6 +133,18 @@ class Comments
                 $reply->setParent(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUsername(): ?string
+    {
+        return $this->username;
+    }
+
+    public function setUsername(string $username): self
+    {
+        $this->username = $username;
 
         return $this;
     }

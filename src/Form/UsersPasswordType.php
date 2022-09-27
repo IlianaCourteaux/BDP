@@ -51,7 +51,7 @@ class UsersPasswordType extends AbstractType
 
                 'invalid_message' => 'Les nouveaux mots de passe ne correspondent pas'
             ])
-            ->add('submit', SubmitType::class, [
+            ->add('Envoyer', SubmitType::class, [
                 'attr' => [
                     'class' => 'submit_button'
                 ]

@@ -20,10 +20,49 @@ card.forEach(crd => {
 });
 
 
+// COMMENTAIRES
+
+// let handleCommentForm = () => {
+    
+//     let commentForm = document.querySelector('form.commentform-class');
+
+//     if (null === document.querySelector('form.commentform-class')) {
+//         return;
+//     }
+
+//     commentForm.addEventListener('submit', async(e)) => {
+//         e.preventDefault();
+
+//         let response = await fetch('/ajax/comments', {
+//             method: 'POST',
+//             body: new FormData(e.target)
+//         });
+
+//         if (!response.ok){
+//             return;
+//         }
+
+//         let json = await response.json();
+
+//         if(json.code === 'COMMENT_ADDED_SUCCESSFULLY') {
+
+//             let commentList = document.querySelector('.comment_list');
+//             let commentCount = document.querySelector('.comment_count');
+//             let commentMessage = document.querySelector('.comment_message');
+
+//             commentList.insertAdjacentHTML('afterbegin', json.message);
+//             commentList.lastElementChild.scrollIntoView();
+//             commentCount.innerText = json.numberOfComments;
+//             commentMessage.value = '';
+//         }
+//     }
+// }
+
+
 // MENU HAMBURGER MEDIA QUERIES
 
-const hamburger = document.querySelector(".hamburger");
-const navMenu = document.querySelector(".nav-menu");
+let hamburger = document.querySelector(".hamburger");
+let navMenu = document.querySelector(".nav-menu");
 
 hamburger.addEventListener("click", mobileMenu);
 
@@ -32,7 +71,7 @@ function mobileMenu() {
     navMenu.classList.toggle("active");
 }
 
-const navLink = document.querySelectorAll(".nav-link");
+let navLink = document.querySelectorAll(".nav-link");
 
 navLink.forEach(n => n.addEventListener("click", closeMenu));
 

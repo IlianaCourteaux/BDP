@@ -252,6 +252,7 @@ section img{
 .contact_form h1 {
     text-align: center;
     padding-top: 30px;
+    color: white;
 }
 
 #contact h3 {
@@ -324,7 +325,7 @@ section img{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100px;
+    height: 70px;
 }
 
 .card-title {
@@ -382,6 +383,12 @@ section img{
 }
 
 /* Déclarations spécifiques pour l'espace commentaires */
+
+.article-comments h3 {
+    padding-top: 1%;
+    margin-bottom: 0.5%;
+}
+
 .comment_form, .comment_list{
     display: block;
     padding: 1% 30%;
@@ -402,7 +409,7 @@ section img{
 }
 
 .comment_list .comment_item {
-    margin: 5%;
+    margin-bottom: 3%;
     padding: 3%;
     border: 1px solid rgb(216, 216, 216);
     background-color: white;

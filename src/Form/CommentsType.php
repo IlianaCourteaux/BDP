@@ -17,7 +17,7 @@ class CommentsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('user', TextType::class, [
+            ->add('username', TextType::class, [
                 'attr' => [
                     'class' => 'form_item comment-user-item',
                 ],
@@ -57,6 +57,7 @@ class CommentsType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Comments::class,
+            'csrf_token_id' => 'comment-add'
         ]);
     }
 }

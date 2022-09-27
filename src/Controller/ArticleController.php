@@ -25,6 +25,7 @@ class ArticleController extends AbstractController
 
         $form = $this->createForm(SearchFormType::class);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $searchWord = $form->get('searchWord')->getData();
             $filteredPosts = $manager->getRepository(Article::class)->findWithSearchword($searchWord);
@@ -39,9 +40,7 @@ class ArticleController extends AbstractController
         // return $this->render('article/index.html.twig', [
         //     'articlesList' => $articleService->getPaginatedArticles(),
         // ]);
-
     }
-    
 
     #[Route('article/{slug}', name: 'app_single', methods: ['GET', 'POST'])]
     public function single(?Article $article, EntityManagerInterface $emi, CommentsService $commentsService, Request $request):Response
@@ -57,9 +56,9 @@ class ArticleController extends AbstractController
 
         $commentForm = $this->createForm(CommentsType::class, $comment);
         $commentForm->handleRequest($request);
-        
+
         if($commentForm->isSubmitted() && $commentForm->isValid()) {
-            $comment->setCreatedAt(new \DateTime());
+            $comment->setCreatedAt(new \DateTimeImmutable());
             $comment->setArticle($article);
 
             $parentid = $commentForm->get("parent")->getData();
@@ -70,6 +69,7 @@ class ArticleController extends AbstractController
 
             $comment->setParent($parent ?? null);
 
+            dd($comment);
             $emi->persist($comment);
             $emi->flush();
 

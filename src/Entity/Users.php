@@ -53,8 +53,8 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Comments::class)]
-    private $comments;
+    // #[ORM\OneToMany(mappedBy: 'user', targetEntity: Comments::class)]
+    // private $comments;
 
 
     public function __construct()

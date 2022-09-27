@@ -33,12 +33,13 @@
 
         {% include 'home/flash.html.twig' %}
         
-        <div class="comment_form">{{ form(commentForm) }}</div>
+        <div class="comment_form">{{ form(commentForm, { 'attr': {'class':'commentform-class'} }) }}</div>
 
-        <h3>{{ article.comments|length }} commentaire(s)</h3>
+        <h3 class="comment_count">{{ article.comments|length }} commentaire(s)</h3>
 
         {# Liste des commentaires #}
         <div class="comment_list">
+
             {% for comment in comments %}
                 {% if comment.parent == null %} 
                     <div class="comment_item comment_parent">
