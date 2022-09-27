@@ -5,11 +5,35 @@
 {% block body %}
 
 <div>
-    <h1 class="page-title">Tous les articles</h1>
-
-    <div id="allarticles" class='d-flex flex-wrap justify-content-evenly'>
-		{% include "article/_cards.html.twig" %}
+    <div class="search">
+		{{form(form)}}
 	</div>
+
+{# <div id="allarticles" class='d-flex flex-wrap justify-content-evenly'> #}
+
+    {% if filteredPosts %}
+        
+        <h1 class="page-title">Résultat de la recherche</h1>
+
+        <div id="allsearcharticles">
+            {% for article in filteredPosts %}
+                    {% include "article/_cards.html.twig" %}
+            {% endfor %}
+        </div>
+
+    {% else %}
+
+        <h1 class="page-title">Tous les articles</h1>
+
+        <div id="allarticles">
+            {% for article in articlesList %}
+                {% include "article/_cards.html.twig" %}
+            {% endfor %}
+        </div>
+
+    {% endif %}
+
+    {# </div> #}
 
         <div class="row">
             <div>

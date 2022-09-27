@@ -1,6 +1,6 @@
 /* MEDIA QUERIES POUR AFFICHAGE MOBILE ET TABLETTE */
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1000px) {
 
     /* ---------- NAVBAR ---------- */
 
@@ -58,6 +58,14 @@
             padding: 8px 10px 8px 10px;
         }
 
+        .dropdown, .dropdown-menu, .dropdown i, .dropdown label, .dropdown input {
+            display: none;
+        }
+
+        .nav-mq {
+            display: block;
+        }
+
         .nav-account-icon {
             display: block;
         }
@@ -76,10 +84,21 @@
             max-width: 300px;
             padding: 10% 0 2% 0;
         }
+
+        
+    .search {
+        position: relative;
+        margin-left: 45%;
+        margin-top: 70px;
+    }
 }
 
 /* MEDIA QUERIES POUR AFFICHAGE MOBILE */
 
-@media only screen and (max-width: 480px) {
-
+@media only screen and (max-width: 600px) {
+    .search {
+        position: relative;
+        margin-left: 35%;
+        margin-top: 70px;
+    }
 }

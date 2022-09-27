@@ -1,17 +1,13 @@
-{% for article in articlesList %}
+<div class="card">
 
-	<div class="card">
-
-        <img src="{{ asset('img/uploads/' ~ article.image.fileName) }}" class="card-img" alt="{{ article.title }}">
+    <img src="{{ asset('img/uploads/' ~ article.image.fileName) }}" class="card-img" alt="{{ article.title }}">
 		
-		<a href="{{ path('app_single', {slug: article.slug}) }}" class="link"></a>
+	<a href="{{ path('app_single', {slug: article.slug}) }}" class="link"></a>
 
-        <div class="card-content">
+    <div class="card-content">
 
-			<h5 class="card-title">{{ article.title }}</h5>
-
-		</div>
+		<h5 class="card-title">{{ article.title }}</h5>
 
 	</div>
 
-{% endfor %}
+</div>

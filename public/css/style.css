@@ -113,6 +113,10 @@ input[type=checkbox] {
     box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.2);
   }
 
+.nav-mq {
+    display: none;
+}
+
 .nav-account-icon {
     display: none;
 }
@@ -245,6 +249,11 @@ section img{
 
 /* Caractéristiques spécifiques : section contact*/
 
+.contact_form h1 {
+    text-align: center;
+    padding-top: 30px;
+}
+
 #contact h3 {
     color: white;
     font-size: x-large;
@@ -286,7 +295,7 @@ section img{
     text-align: center;
 }
 
-#allarticles {
+#allarticles, #allsearcharticles {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -336,6 +345,7 @@ section img{
     height: 100%;
     visibility: hidden;
 }
+
 
 /* ------------------------------------------------------------ */
 /* -- Déclarations spécifiques pour les pages single article -- */
@@ -524,3 +534,20 @@ section img{
     color: rgba(114, 28, 36,1);
 }
 
+
+/* Barre de recherche */
+
+.search {
+    position: fixed;
+    right : 3%;
+}
+
+.search_item {
+    margin: 1%;
+}
+
+.search_button {
+    margin: 10px 50px;
+    padding: 8px 10px;
+    font-size: medium;
+}

@@ -40,6 +40,17 @@ class ArticleRepository extends ServiceEntityRepository
         return $qb->getQuery();
     }
 
+    public function findWithSearchword ($searchword): ?array
+    {
+        $qb = $this->createQueryBuilder('p');
+        $qb->where($qb->expr()->like('p.title', $qb->expr()->literal('%'. $searchword . '%')))
+            ->join('p.subCategories', 's')
+            ->orWhere($qb->expr()->like('p.text', $qb->expr()->literal('%'. $searchword . '%')))
+            ->orWhere($qb->expr()->like('s.name', $qb->expr()->literal('%'. $searchword .'%')))
+        ;
+        return $qb->getQuery()->getResult();
+    }
+
     // public function add(Article $entity, bool $flush = false): void
     // {
     //     $this->getEntityManager()->persist($entity);
